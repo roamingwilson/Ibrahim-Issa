@@ -32,7 +32,6 @@ export const SceneIntro: React.FC<SceneIntroProps> = ({
           className="flex items-center gap-2 text-xs font-mono font-bold text-[#0284C7] tracking-widest uppercase"
         >
           <span className="w-2 h-2 rounded-full bg-[#0284C7] animate-pulse" />
-          <span>{isAr ? 'مطور ويب ومطور تطبيقات فلاتر' : 'WEB DEVELOPER & FLUTTER APPS DEVELOPER'}</span>
         </motion.div>
 
         {/* Interactive Canvas Particle System reading "Ibrahim Issa" */}
