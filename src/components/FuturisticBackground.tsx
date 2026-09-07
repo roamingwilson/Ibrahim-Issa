@@ -108,19 +108,6 @@ export const FuturisticBackground: React.FC<FuturisticBackgroundProps> = ({
               +
             </div>
 
-            {/* Top Technical Framing Header Section */}
-            <div className="w-full flex items-center justify-between border-b border-slate-800/[0.03] pb-3 text-[9px] font-mono tracking-widest text-slate-400/35 uppercase">
-              <div className="flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500/25" />
-                <span className="hidden sm:inline">SYS // ARCHITECTURAL CANVAS</span>
-                <span className="sm:hidden">CANVAS</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="hidden md:inline">24PX DOT MATRIX // HIGH CONTRAST</span>
-                <span>v3.8</span>
-              </div>
-            </div>
-
             {/* Inner Technical Rounded Segment (Subtle Secondary Layer) */}
             <div className="my-auto w-full h-[65%] rounded-[20px] sm:rounded-[28px] border border-sky-900/[0.03] relative pointer-events-none hidden sm:block">
               {/* Subtle architectural vertical axis */}
