@@ -10,6 +10,7 @@ import { SceneProjects } from '../scenes/SceneProjects';
 import { SceneProjectDetail } from '../scenes/SceneProjectDetail';
 import { SceneContact } from '../scenes/SceneContact';
 import { FuturisticBackground } from './FuturisticBackground';
+import { ElectronicCookieNotice } from './ElectronicCookieNotice';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface PortfolioStageProps {
@@ -329,6 +330,9 @@ export const PortfolioStage: React.FC<PortfolioStageProps> = ({
           </motion.div>
         </AnimatePresence>
       </main>
+
+      {/* Electronics-style Cookie & Memory Register Notice */}
+      <ElectronicCookieNotice lang={lang} />
 
     </div>
   );
