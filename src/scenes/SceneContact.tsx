@@ -13,6 +13,7 @@ import {
   MessageSquare,
   Sparkles
 } from 'lucide-react';
+import { ElectronicButton } from '../components/ElectronicButton';
 
 interface SceneContactProps {
   lang: Language;
@@ -104,59 +105,68 @@ export const SceneContact: React.FC<SceneContactProps> = ({
               </span>
             </div>
 
-            <button
+            <ElectronicButton
               onClick={handleCopyEmail}
-              className="px-3.5 py-1.5 bg-[#FAF8F5] hover:bg-[#F0F9FF] text-xs font-mono font-bold text-[#1A1816] border border-[#E8E3DA] flex items-center gap-1.5 transition-all cursor-pointer"
+              variant="secondary"
+              code={copied ? '200_OK' : 'COPY'}
+              icon={copied ? Check : Copy}
+              ledColor={copied ? 'green' : 'blue'}
+              size="sm"
+              isRtl={isAr}
             >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-emerald-700">{isAr ? 'تم النسخ' : 'Copied'}</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5 text-[#8C857D]" />
-                  <span>{isAr ? 'نسخ' : 'Copy'}</span>
-                </>
-              )}
-            </button>
+              {copied ? (isAr ? 'تم النسخ' : 'Copied') : (isAr ? 'نسخ' : 'Copy')}
+            </ElectronicButton>
           </div>
         </motion.div>
 
-        {/* Direct Actions: Send Direct Message & Social Channels */}
+        {/* Direct Actions: Send Direct Message & Social Channels with Electronic Styling */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-wrap items-center justify-center gap-3 pt-1"
         >
-          <button
+          <ElectronicButton
             onClick={() => setIsFormOpen(!isFormOpen)}
-            className="px-5 py-2.5 bg-[#1A1816] hover:bg-[#0284C7] text-white text-xs font-bold transition-all shadow-md flex items-center gap-2 cursor-pointer"
+            variant="primary"
+            code="COMM_LINK"
+            icon={MessageSquare}
+            ledColor="blue"
+            size="md"
+            isRtl={isAr}
           >
-            <MessageSquare className="w-4 h-4" />
-            <span>{isFormOpen ? (isAr ? 'إغلاق النموذج' : 'Close Form') : (isAr ? 'إرسال رسالة مباشرة' : 'Send Message')}</span>
-          </button>
+            {isFormOpen
+              ? (isAr ? 'إغلاق النموذج' : 'Close Form')
+              : (isAr ? 'إرسال رسالة مباشرة' : 'Send Message')}
+          </ElectronicButton>
 
-          <a
+          <ElectronicButton
             href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2.5 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow"
+            variant="secondary"
+            code="GIT_SRC"
+            icon={Github}
+            ledColor="amber"
+            size="md"
+            isRtl={isAr}
           >
-            <Github className="w-3.5 h-3.5 text-[#0284C7]" />
-            <span>GitHub</span>
-          </a>
+            GitHub
+          </ElectronicButton>
 
-          <a
+          <ElectronicButton
             href={PERSONAL_INFO.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2.5 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow"
+            variant="secondary"
+            code="NET_LINK"
+            icon={Linkedin}
+            ledColor="blue"
+            size="md"
+            isRtl={isAr}
           >
-            <Linkedin className="w-3.5 h-3.5 text-[#0284C7]" />
-            <span>LinkedIn</span>
-          </a>
+            LinkedIn
+          </ElectronicButton>
         </motion.div>
 
         {/* Interactive In-Scene Contact Form */}
@@ -226,13 +236,19 @@ export const SceneContact: React.FC<SceneContactProps> = ({
                   />
                 </div>
 
-                <button
+                <ElectronicButton
                   type="submit"
-                  className="w-full py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white font-bold flex items-center justify-center gap-2 cursor-pointer"
+                  variant="primary"
+                  code="TX_PACKET"
+                  icon={Send}
+                  ledColor="green"
+                  pulseLed={true}
+                  size="md"
+                  isRtl={isAr}
+                  className="w-full"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>{isAr ? 'إرسال الرسالة' : 'Send Message'}</span>
-                </button>
+                  {isAr ? 'إرسال الرسالة' : 'Send Message'}
+                </ElectronicButton>
               </>
             )}
           </motion.form>
@@ -242,13 +258,16 @@ export const SceneContact: React.FC<SceneContactProps> = ({
         <div className="pt-6 border-t border-[#E8E3DA] flex items-center justify-between text-xs font-mono text-[#8C857D] max-w-md mx-auto">
           <span>{PERSONAL_INFO.name[lang]} • 2025</span>
 
-          <button
+          <ElectronicButton
             onClick={onRestartExperience}
-            className="flex items-center gap-1.5 text-[#0284C7] hover:text-[#0369A1] font-bold cursor-pointer transition-colors"
+            variant="ghost"
+            code="REBOOT"
+            iconRight={ArrowUp}
+            size="sm"
+            isRtl={isAr}
           >
-            <span>{isAr ? 'العودة إلى البداية' : 'Return to Intro'}</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
+            {isAr ? 'العودة إلى البداية' : 'Return to Intro'}
+          </ElectronicButton>
         </div>
 
       </div>

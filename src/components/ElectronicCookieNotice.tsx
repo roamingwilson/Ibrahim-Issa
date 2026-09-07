@@ -186,34 +186,40 @@ export const ElectronicCookieNotice: React.FC<ElectronicCookieNoticeProps> = ({ 
                 <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
                   
                   {/* Secondary Button: "Accept only necessary" / "قبول الضروري فقط" */}
-                  <button
+                  <motion.button
                     onClick={() => handleConsent('essential')}
                     id="cookie-accept-necessary-btn"
+                    whileHover={{ scale: 1.04, y: -1 }}
+                    whileTap={{ scale: 0.95 }}
                     className="flex items-center gap-1 px-2.5 py-1 bg-[#142319] hover:bg-[#1C3224] text-[#A6C9B4] hover:text-[#D5EADB] text-xs font-mono border border-[#274A32] rounded-[3px] shadow-sm transition-colors cursor-pointer whitespace-nowrap"
                   >
                     <Shield className="w-3 h-3 text-[#7B9E87]" />
                     <span>{isAr ? 'قبول الضروري فقط' : 'Accept only necessary'}</span>
-                  </button>
+                  </motion.button>
 
                   {/* Primary Button: "Accept" / "قبول" */}
-                  <button
+                  <motion.button
                     onClick={() => handleConsent('all')}
                     id="cookie-accept-all-btn"
-                    className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-[#D4AF37] to-[#F3D368] hover:from-[#E5BF45] hover:to-[#FFE07A] text-[#1A1502] text-xs font-mono font-bold rounded-[3px] shadow-[0_2px_8px_rgba(212,175,55,0.35)] transition-all cursor-pointer active:scale-95 whitespace-nowrap"
+                    whileHover={{ scale: 1.04, y: -1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-[#D4AF37] to-[#F3D368] hover:from-[#E5BF45] hover:to-[#FFE07A] text-[#1A1502] text-xs font-mono font-bold rounded-[3px] shadow-[0_2px_8px_rgba(212,175,55,0.35)] transition-all cursor-pointer whitespace-nowrap"
                   >
                     <Check className="w-3.5 h-3.5 text-[#1A1502] stroke-[2.5]" />
                     <span>{isAr ? 'قبول' : 'Accept'}</span>
-                  </button>
+                  </motion.button>
 
                   {/* Quick Close Button */}
-                  <button
+                  <motion.button
                     onClick={() => setIsOpen(false)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     className="p-1 text-[#6F8A7A] hover:text-[#E2E8F0] hover:bg-[#182C20] rounded-[2px] transition-colors cursor-pointer ml-0.5"
                     title={isAr ? 'إغلاق' : 'Close'}
                     aria-label="Close cookie notice"
                   >
                     <X className="w-3.5 h-3.5" />
-                  </button>
+                  </motion.button>
 
                 </div>
 
