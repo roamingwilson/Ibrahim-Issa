@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-syne {
+    font-family: 'Syne', sans-serif;
+  }
+  .font-space {
+    font-family: 'Space Grotesk', monospace, sans-serif;
+  }
+  .font-jakarta {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .font-arabic {
+    font-family: 'Alexandria', sans-serif;
+  }
+}
+
+/* Ensure ALL Arabic text uses Alexandria cleanly and uniformly without ugly system font fallbacks */
+[dir="rtl"],
+[dir="rtl"] * {
+  font-family: 'Alexandria', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Modern flat architectural shadows */
+.modern-flat-shadow {
+  box-shadow: 0 4px 20px -2px rgba(26, 24, 22, 0.08), 0 2px 6px -1px rgba(26, 24, 22, 0.04);
+}
+
+.modern-elevated-shadow {
+  box-shadow: 0 10px 30px -4px rgba(26, 24, 22, 0.1), 0 4px 10px -2px rgba(26, 24, 22, 0.04);
+}
+
+/* ==========================================================================
+   AI Futuristic Minimal Background System
+   Reusable classes for any section or container
+   ========================================================================== */
+
+/* 1. Subtle Dotted Grid Matrix (Thousands of tiny circular dots) */
+.ai-bg-dots {
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.085) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  background-position: center center;
+}
+
+/* 2. Soft Ambient Gradient Glows (Light sky blue, lavender, and warm peach) */
+.ai-bg-glows {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.13) 0%, rgba(2, 132, 199, 0.04) 40%, transparent 65%),
+    radial-gradient(circle at 85% 18%, rgba(192, 132, 252, 0.11) 0%, rgba(147, 51, 234, 0.03) 40%, transparent 65%),
+    radial-gradient(circle at 50% 88%, rgba(254, 215, 170, 0.14) 0%, rgba(251, 146, 60, 0.04) 45%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(224, 242, 254, 0.3) 0%, transparent 65%),
+    #FAF9F6;
+}
+
+/* 3. Combined Reusable All-in-One AI Futuristic Section Class */
+.ai-futuristic-section {
+  position: relative;
+  background-color: #FAF9F6;
+  background-image:
+    radial-gradient(circle, rgba(15, 23, 42, 0.085) 1.2px, transparent 1.2px),
+    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.13) 0%, transparent 55%),
+    radial-gradient(circle at 85% 18%, rgba(192, 132, 252, 0.11) 0%, transparent 55%),
+    radial-gradient(circle at 50% 88%, rgba(254, 215, 170, 0.14) 0%, transparent 60%);
+  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%;
+  background-position: center center;
+}
+
+/* 4. Faint Technical Rounded Rectangular Grid Frame */
+.ai-technical-frame {
+  border: 1px solid rgba(15, 23, 42, 0.045);
+  border-radius: 36px;
+}
+
+
+
