@@ -1,397 +1,225 @@
 import React, { useState, useEffect } from 'react';
 import { Language } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
-import { Cpu, Check, Sliders, ShieldCheck, Zap, X, HardDrive, RefreshCw } from 'lucide-react';
+import { X, Check, Shield } from 'lucide-react';
 
 interface ElectronicCookieNoticeProps {
   lang: Language;
 }
 
-interface CookieJumperState {
-  core: boolean;        // JMP_01: Core state & language (always true)
-  performance: boolean; // JMP_02: Performance metrics & frame profile
-  cache: boolean;       // JMP_03: Offline asset & scene prefetch
-}
-
-const STORAGE_KEY = 'ibrahim_issa_cookie_telemetry';
+const STORAGE_KEY = 'ibrahim_issa_cookie_consent';
 
 export const ElectronicCookieNotice: React.FC<ElectronicCookieNoticeProps> = ({ lang }) => {
   const isAr = lang === 'ar';
   
-  // Consent state: null means not yet decided, true means dismissed/saved
-  const [hasDecided, setHasDecided] = useState<boolean>(true); // start closed to avoid flash, check in effect
+  const [hasDecided, setHasDecided] = useState<boolean>(true);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [showJumpers, setShowJumpers] = useState<boolean>(false);
-  const [jumpers, setJumpers] = useState<CookieJumperState>({
-    core: true,
-    performance: true,
-    cache: true,
-  });
 
-  // Check saved state from localStorage on mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        const parsed = JSON.parse(saved);
-        setJumpers(parsed);
         setHasDecided(true);
         setIsOpen(false);
       } else {
         setHasDecided(false);
-        // Subtle delay for circuit initialization feel
         const timer = setTimeout(() => {
           setIsOpen(true);
-        }, 900);
+        }, 700);
         return () => clearTimeout(timer);
       }
     } catch {
-      // In private mode or sandboxed environment
       setHasDecided(false);
       setIsOpen(true);
     }
   }, []);
 
-  const handleSavePreferences = (state: CookieJumperState) => {
+  const handleConsent = (level: 'all' | 'essential') => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ level, timestamp: Date.now() }));
     } catch {
       // ignore
     }
-    setJumpers(state);
     setHasDecided(true);
     setIsOpen(false);
   };
 
-  const handleAcceptAll = () => {
-    const fullState: CookieJumperState = { core: true, performance: true, cache: true };
-    handleSavePreferences(fullState);
-  };
-
-  const handleAcceptEssential = () => {
-    const essentialState: CookieJumperState = { core: true, performance: false, cache: false };
-    handleSavePreferences(essentialState);
-  };
-
-  const handleToggleJumper = (key: keyof CookieJumperState) => {
-    if (key === 'core') return; // Core is hardwired
-    setJumpers(prev => ({ ...prev, [key]: !prev[key] }));
-  };
-
   return (
     <>
-      {/* Minimized Electronics Chip Badge (Floats at bottom edge when collapsed) */}
+      {/* Minimized Electronic Component Badge (When dismissed/saved) */}
       <AnimatePresence>
         {!isOpen && hasDecided && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 15, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className={`fixed bottom-4 z-40 ${
-              isAr ? 'right-4 sm:right-6' : 'left-4 sm:left-6'
-            }`}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.25 }}
+            className={`fixed bottom-3 z-40 ${isAr ? 'left-3 sm:left-5' : 'right-3 sm:right-5'}`}
           >
             <button
               onClick={() => setIsOpen(true)}
-              id="electronic-cookie-chip-btn"
-              className="group flex items-center gap-2.5 px-3 py-1.5 bg-[#FAF9F6]/95 hover:bg-white text-[#1A1816] text-xs font-mono border border-[#D4CEB8] rounded-md shadow-[0_4px_14px_rgba(0,0,0,0.06)] hover:border-[#0284C7] hover:shadow-[0_4px_18px_rgba(2,132,199,0.15)] transition-all cursor-pointer backdrop-blur-md"
-              title={isAr ? 'إعدادات سجل الذاكرة والملفات الإلكترونية' : 'Circuit Memory & Cookie Registers'}
+              id="reopen-cookie-pcb-btn"
+              className="group flex items-center gap-2 px-2.5 py-1.5 bg-[#0C140F] hover:bg-[#111C15] text-[#D8E6DC] text-[11px] font-mono border border-[#234A30] rounded shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-all cursor-pointer select-none"
+              title={isAr ? 'سجلات الذاكرة وملفات الارتباط' : 'Cookie & Memory Registers'}
             >
-              {/* Micro Solder Pin & Pulsing LED */}
+              {/* Realistic SMD Green LED */}
               <div className="relative flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_6px_#10B981]" />
-                <span className="absolute w-2 h-2 rounded-full bg-emerald-400 animate-ping opacity-75" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] shadow-[0_0_6px_#10B981]" />
+                <span className="absolute w-1.5 h-1.5 rounded-full bg-[#34D399] animate-ping opacity-60" />
               </div>
 
-              <Cpu className="w-3.5 h-3.5 text-[#0284C7] group-hover:rotate-12 transition-transform" />
-
-              <span className="text-[11px] font-bold tracking-wider text-[#1A1816]">
-                {isAr ? 'سجل الذاكرة // IC_CACHE' : 'IC_CACHE // REG:OK'}
+              {/* Realistic SMD chip silhouette */}
+              <span className="bg-[#1C241E] px-1.5 py-0.5 rounded text-[10px] text-[#A7C4B2] border border-[#2E4233] font-bold tracking-wider">
+                IC_24C
               </span>
 
-              <span className="text-[9px] px-1 py-0.5 bg-[#E2DDD5]/70 text-[#6B7280] rounded border border-[#CBD5E1]">
-                3.3V
+              <span className="text-[#8FA899] text-[10px] hidden sm:inline font-mono">
+                {isAr ? 'ملفات الارتباط' : 'COOKIES'}
               </span>
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Main Electronic Cookie Module / PCB Board Notice */}
+      {/* Main Electronic Breakout PCB Notice: Sleek, 1-Line Text, Realistic Hardware */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.96 }}
+          <motion.aside
+            initial={{ opacity: 0, y: 25, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.95 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className={`fixed bottom-4 sm:bottom-6 z-50 max-w-[540px] w-[calc(100vw-2rem)] sm:w-auto ${
-              isAr ? 'right-4 sm:right-6' : 'left-4 sm:left-6'
+            exit={{ opacity: 0, y: 20, scale: 0.98 }}
+            transition={{ type: 'spring', damping: 28, stiffness: 350 }}
+            className={`fixed bottom-3 sm:bottom-4 z-50 w-[calc(100vw-1.5rem)] sm:w-auto max-w-2xl ${
+              isAr ? 'left-3 sm:left-5' : 'right-3 sm:right-5'
             }`}
+            aria-label={isAr ? 'إشعار ملفات الارتباط' : 'Cookie notice'}
           >
-            {/* Electronic PCB Enclosure */}
+            {/* Realistic Dark FR-4 PCB Board Enclosure */}
             <div 
-              id="electronic-cookie-circuit-panel"
-              className="relative bg-[#FCFBF8] border-2 border-[#1E293B] shadow-[0_12px_40px_rgba(15,23,42,0.18)] rounded-xl overflow-hidden font-mono text-[#1A1816]"
+              id="electronic-cookie-pcb"
+              className="relative bg-[#0A140E] border-2 border-[#1E3B27] shadow-[0_12px_32px_rgba(0,0,0,0.5),0_0_0_1px_rgba(212,175,55,0.3)] rounded-lg py-2 px-3 sm:py-2.5 sm:px-3.5 text-[#E2E8F0] font-mono select-none overflow-hidden"
             >
-              {/* Subtle PCB Etched Grid and Trace Background Layer */}
-              <div 
-                className="absolute inset-0 pointer-events-none opacity-[0.045]"
-                style={{
-                  backgroundImage: `
-                    radial-gradient(circle, #0284C7 1px, transparent 1px),
-                    linear-gradient(to right, #0284C7 1px, transparent 1px),
-                    linear-gradient(to bottom, #0284C7 1px, transparent 1px)
-                  `,
-                  backgroundSize: '16px 16px',
-                }}
-              />
+              {/* Authentic PCB Solder Mask Texture with Subtle 45-degree Copper Traces */}
+              <svg 
+                className="absolute inset-0 w-full h-full pointer-events-none opacity-20" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <pattern id="pcb-traces-clean" width="50" height="50" patternUnits="userSpaceOnUse">
+                    <path d="M 0 12 L 25 12 L 37 24 L 50 24" fill="none" stroke="#D4AF37" strokeWidth="0.8" />
+                    <path d="M 8 0 L 8 20 L 20 32 L 50 32" fill="none" stroke="#2D6A42" strokeWidth="0.8" />
+                    <circle cx="25" cy="12" r="1.5" fill="#D4AF37" />
+                    <circle cx="37" cy="24" r="1.5" fill="#D4AF37" />
+                    <circle cx="20" cy="32" r="1.5" fill="#2D6A42" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#pcb-traces-clean)" />
+              </svg>
 
-              {/* 4 Corner Brass Solder Mounting Rings */}
-              <div className="absolute top-2 left-2 w-2 h-2 rounded-full border border-[#B45309] bg-[#FEF3C7] shadow-inner" />
-              <div className="absolute top-2 right-2 w-2 h-2 rounded-full border border-[#B45309] bg-[#FEF3C7] shadow-inner" />
-              <div className="absolute bottom-2 left-2 w-2 h-2 rounded-full border border-[#B45309] bg-[#FEF3C7] shadow-inner" />
-              <div className="absolute bottom-2 right-2 w-2 h-2 rounded-full border border-[#B45309] bg-[#FEF3C7] shadow-inner" />
-
-              {/* Top Electronic Header / Silkscreen Strip */}
-              <div className="bg-[#0F172A] text-[#F8FAFC] px-4 py-2.5 flex items-center justify-between border-b border-[#334155]">
-                <div className="flex items-center gap-2.5">
-                  {/* IC Chip Icon with green power diode */}
-                  <div className="flex items-center gap-1.5 bg-[#1E293B] px-2 py-0.5 rounded border border-[#334155]">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <Cpu className="w-3.5 h-3.5 text-sky-400" />
-                    <span className="text-[10px] text-sky-300 font-bold tracking-widest">
-                      IC_EEPROM::24C
-                    </span>
-                  </div>
-
-                  {/* Silkscreen Pin Voltage */}
-                  <span className="text-[10px] text-slate-400 tracking-wider hidden sm:inline">
-                    BUS_I2C // 3.3V
-                  </span>
-                </div>
-
-                {/* Technical Close / Minimize Jumper Button */}
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 transition-colors cursor-pointer"
-                  title={isAr ? 'تصغير' : 'Minimize register'}
-                  aria-label="Minimize"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
+              {/* Four Corner Plated Brass Mounting Holes with Solder Rings */}
+              <div className="absolute top-1.5 left-1.5 w-2 h-2 rounded-full border border-[#D4AF37] bg-[#0A140E] flex items-center justify-center pointer-events-none">
+                <div className="w-1 h-1 rounded-full bg-[#1A1A1A]" />
+              </div>
+              <div className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full border border-[#D4AF37] bg-[#0A140E] flex items-center justify-center pointer-events-none">
+                <div className="w-1 h-1 rounded-full bg-[#1A1A1A]" />
+              </div>
+              <div className="absolute bottom-1.5 left-1.5 w-2 h-2 rounded-full border border-[#D4AF37] bg-[#0A140E] flex items-center justify-center pointer-events-none">
+                <div className="w-1 h-1 rounded-full bg-[#1A1A1A]" />
+              </div>
+              <div className="absolute bottom-1.5 right-1.5 w-2 h-2 rounded-full border border-[#D4AF37] bg-[#0A140E] flex items-center justify-center pointer-events-none">
+                <div className="w-1 h-1 rounded-full bg-[#1A1A1A]" />
               </div>
 
-              {/* Main Board Content */}
-              <div className="p-4 sm:p-5 relative z-10 space-y-3.5">
+              {/* Main Compact Content Layout - Single Clean Row on Desktop */}
+              <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4 pl-2 pr-1">
                 
-                {/* Circuit Title & Status Line */}
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 bg-amber-100 text-amber-900 border border-amber-300 rounded uppercase tracking-wider">
-                        {isAr ? 'بروتوكول الذاكرة' : 'PROTOCOL // 0x4B'}
-                      </span>
-                      <span className="text-[10px] text-[#0284C7] font-semibold tracking-wider">
-                        {isAr ? 'سجلات التخزين المؤقت' : 'LOCAL DEVICE REGISTERS'}
-                      </span>
+                {/* Left Side: Physical IC Chip, LED, and Exactly One Line of Text */}
+                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+                  
+                  {/* Realistic SOIC-8 Surface Mount IC Chip */}
+                  <div className="relative shrink-0 w-7 h-8 bg-[#1E2328] rounded-[2px] border border-[#3A4048] shadow-[0_2px_4px_rgba(0,0,0,0.5)] flex flex-col justify-between py-1 px-0.5">
+                    {/* Pin 1 Dot */}
+                    <div className="w-1 h-1 rounded-full bg-[#0D1013] border border-[#48525E]" />
+
+                    {/* Laser Etched Chip Markings */}
+                    <div className="text-[6px] text-[#A0AEC0] leading-none text-center font-bold tracking-tighter">
+                      24C
                     </div>
 
-                    <h4 className={`text-sm sm:text-base font-bold text-[#0F172A] ${isAr ? 'font-arabic' : 'font-jakarta'}`}>
-                      {isAr 
-                        ? 'إشعار سجلات الذاكرة وملفات الارتباط' 
-                        : 'Circuit Memory & Telemetry Notice'}
-                    </h4>
+                    {/* Silver Solder Pins on Left & Right */}
+                    <div className="absolute -left-1 top-1.5 w-1 h-0.5 bg-[#CBD5E1] rounded-sm" />
+                    <div className="absolute -left-1 top-3.5 w-1 h-0.5 bg-[#CBD5E1] rounded-sm" />
+                    <div className="absolute -left-1 top-5.5 w-1 h-0.5 bg-[#CBD5E1] rounded-sm" />
+
+                    <div className="absolute -right-1 top-1.5 w-1 h-0.5 bg-[#CBD5E1] rounded-sm" />
+                    <div className="absolute -right-1 top-3.5 w-1 h-0.5 bg-[#CBD5E1] rounded-sm" />
+                    <div className="absolute -right-1 top-5.5 w-1 h-0.5 bg-[#CBD5E1] rounded-sm" />
                   </div>
 
-                  {/* Micro Schematic Trace SVG Graphic */}
-                  <div className="hidden sm:block shrink-0" aria-hidden="true">
-                    <svg width="48" height="32" viewBox="0 0 48 32" className="text-[#0284C7]">
-                      <path 
-                        d="M 2 16 L 14 16 L 20 6 L 28 26 L 34 16 L 46 16" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="1.5" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                      />
-                      <circle cx="2" cy="16" r="2" fill="#D97706" />
-                      <circle cx="46" cy="16" r="2" fill="#10B981" />
-                    </svg>
+                  {/* Silkscreen Reference & Power Indicator */}
+                  <div className="shrink-0 flex flex-col items-center gap-0.5">
+                    <span className="text-[8px] text-[#90B89C] font-mono leading-none tracking-wider">U1</span>
+                    {/* SMD Green LED */}
+                    <div className="w-2.5 h-1.5 bg-[#0F2918] border border-[#235835] rounded-[1px] flex items-center justify-center">
+                      <span className="w-1 h-1 rounded-full bg-[#10B981] shadow-[0_0_4px_#34D399]" />
+                    </div>
                   </div>
+
+                  {/* Single Text Block - Strictly One Line */}
+                  <p 
+                    className={`text-xs text-[#D1E2D6] truncate ${
+                      isAr ? 'font-arabic text-right' : 'font-sans'
+                    }`}
+                    title={
+                      isAr
+                        ? 'نستخدم ملفات الارتباط لحفظ تفضيلاتك وضمان أفضل أداء للموقع.'
+                        : 'We use cookies to save your preferences and ensure optimal performance.'
+                    }
+                  >
+                    {isAr
+                      ? 'نستخدم ملفات الارتباط لحفظ تفضيلاتك وضمان أفضل أداء للموقع.'
+                      : 'We use cookies to save your preferences and ensure optimal performance.'}
+                  </p>
                 </div>
 
-                {/* Explanatory Technical Note */}
-                <p className={`text-xs text-[#334155] leading-relaxed ${isAr ? 'font-arabic text-right' : 'text-left font-sans'}`}>
-                  {isAr
-                    ? 'تستخدم هذه البوابة التقنية سجلات الذاكرة المحلية (Cookies & LocalStorage) لحفظ إعدادات النظام، مثل تفضيل اللغة ومؤشرات أداء الرندر واستجابة الواجهة. جميع البيانات مشفرة محلياً داخل عتاد المتصفح ولا يتم تداولها مع أي شبكات إعلانية.'
-                    : 'This system operates with minimal hardware-style local storage registers (cookies & local state) to maintain session continuity, language preference, and interface rendering latency. No cross-site ad tracking is transmitted over this bus.'}
-                </p>
-
-                {/* Optional Expandable DIP Switches / Jumper Pins */}
-                <AnimatePresence>
-                  {showJumpers && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="bg-[#F1EFE9] border border-[#D4CEB8] rounded-lg p-3 space-y-2.5 my-2">
-                        <div className="flex items-center justify-between text-[11px] font-bold text-[#0F172A] pb-1 border-b border-[#D4CEB8]/70">
-                          <span className="flex items-center gap-1.5">
-                            <Sliders className="w-3 h-3 text-[#0284C7]" />
-                            {isAr ? 'مفاتيح التوصيل (DIP SWITCHES)' : 'DIP SWITCH CONFIGURATION'}
-                          </span>
-                          <span className="text-[10px] text-[#64748B]">8-PIN IC BUS</span>
-                        </div>
-
-                        {/* Jumper 1: Core (Hardwired) */}
-                        <div className="flex items-center justify-between text-xs py-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-[10px] bg-[#E2DDD5] px-1 rounded text-[#475569] font-mono">JMP_1</span>
-                            <div>
-                              <div className="font-semibold text-[#0F172A]">
-                                {isAr ? 'حالة النظام الأساسية واللغة' : 'Core Architecture State'}
-                              </div>
-                              <div className="text-[10px] text-[#64748B]">
-                                {isAr ? 'ثابتة (ضرورية لتشغيل الواجهة والاتجاه)' : 'Hardwired [REQ] (Language & Viewport)'}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-1 px-2 py-0.5 bg-emerald-100 text-emerald-800 border border-emerald-300 rounded text-[10px] font-bold">
-                            <Check className="w-3 h-3" />
-                            {isAr ? 'متصل دائماً' : 'LOCKED ON'}
-                          </div>
-                        </div>
-
-                        {/* Jumper 2: Performance Telemetry */}
-                        <div className="flex items-center justify-between text-xs py-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-[10px] bg-[#E2DDD5] px-1 rounded text-[#475569] font-mono">JMP_2</span>
-                            <div>
-                              <div className="font-semibold text-[#0F172A]">
-                                {isAr ? 'مؤشرات كفاءة التحميل والأداء' : 'Performance Telemetry'}
-                              </div>
-                              <div className="text-[10px] text-[#64748B]">
-                                {isAr ? 'قياس سرعة الشاشات وتدفق الإطارات' : 'Frame Profiling & Render Latency'}
-                              </div>
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleToggleJumper('performance')}
-                            className={`w-9 h-5 flex items-center rounded-full p-0.5 transition-colors cursor-pointer ${
-                              jumpers.performance ? 'bg-[#0284C7]' : 'bg-[#CBD5E1]'
-                            }`}
-                            aria-label="Toggle Performance Telemetry"
-                          >
-                            <div 
-                              className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${
-                                jumpers.performance ? (isAr ? '-translate-x-4' : 'translate-x-4') : 'translate-x-0'
-                              }`} 
-                            />
-                          </button>
-                        </div>
-
-                        {/* Jumper 3: Asset Preload / Cache */}
-                        <div className="flex items-center justify-between text-xs py-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-[10px] bg-[#E2DDD5] px-1 rounded text-[#475569] font-mono">JMP_3</span>
-                            <div>
-                              <div className="font-semibold text-[#0F172A]">
-                                {isAr ? 'التخزين المؤقت للمشاريع' : 'Preload Cache Register'}
-                              </div>
-                              <div className="text-[10px] text-[#64748B]">
-                                {isAr ? 'تسريع التنقل الفوري بين المشاهد' : 'Scene Cache & Vector Acceleration'}
-                              </div>
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleToggleJumper('cache')}
-                            className={`w-9 h-5 flex items-center rounded-full p-0.5 transition-colors cursor-pointer ${
-                              jumpers.cache ? 'bg-[#0284C7]' : 'bg-[#CBD5E1]'
-                            }`}
-                            aria-label="Toggle Preload Cache"
-                          >
-                            <div 
-                              className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${
-                                jumpers.cache ? (isAr ? '-translate-x-4' : 'translate-x-4') : 'translate-x-0'
-                              }`} 
-                            />
-                          </button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {/* Hardware Controls & Action Buttons */}
-                <div className="pt-1 flex flex-wrap items-center gap-2 sm:gap-2.5">
-                  {/* Primary: Engage Bus (Accept All) */}
+                {/* Right Side: Exactly "Accept" and "Accept only necessary" Buttons */}
+                <div className="flex items-center gap-1.5 shrink-0 self-end sm:self-center">
+                  
+                  {/* Secondary Button: "Accept only necessary" / "قبول الضروري فقط" */}
                   <button
-                    onClick={handleAcceptAll}
-                    id="cookie-engage-bus-btn"
-                    className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3.5 py-2 bg-[#0F172A] hover:bg-[#0284C7] text-white text-xs font-bold transition-all rounded shadow-sm hover:shadow-[0_4px_12px_rgba(2,132,199,0.3)] cursor-pointer"
+                    onClick={() => handleConsent('essential')}
+                    id="cookie-accept-necessary-btn"
+                    className="flex items-center gap-1 px-2.5 py-1 bg-[#142319] hover:bg-[#1C3224] text-[#A6C9B4] hover:text-[#D5EADB] text-xs font-mono border border-[#274A32] rounded-[3px] shadow-sm transition-colors cursor-pointer whitespace-nowrap"
                   >
-                    <Zap className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{isAr ? 'تفعيل كافة الدوائر (قبول الكل)' : 'ENGAGE BUS // ACCEPT ALL'}</span>
+                    <Shield className="w-3 h-3 text-[#7B9E87]" />
+                    <span>{isAr ? 'قبول الضروري فقط' : 'Accept only necessary'}</span>
                   </button>
 
-                  {/* Secondary: Minimal Circuit (Essential Only) */}
+                  {/* Primary Button: "Accept" / "قبول" */}
                   <button
-                    onClick={handleAcceptEssential}
-                    id="cookie-minimal-vcc-btn"
-                    className="flex items-center justify-center gap-1.5 px-3 py-2 bg-white hover:bg-[#F1EFE9] text-[#1A1816] text-xs font-bold border border-[#CBD5E1] rounded transition-colors cursor-pointer"
+                    onClick={() => handleConsent('all')}
+                    id="cookie-accept-all-btn"
+                    className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-[#D4AF37] to-[#F3D368] hover:from-[#E5BF45] hover:to-[#FFE07A] text-[#1A1502] text-xs font-mono font-bold rounded-[3px] shadow-[0_2px_8px_rgba(212,175,55,0.35)] transition-all cursor-pointer active:scale-95 whitespace-nowrap"
                   >
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>{isAr ? 'الدوائر الأساسية فقط' : 'MINIMAL VCC ONLY'}</span>
+                    <Check className="w-3.5 h-3.5 text-[#1A1502] stroke-[2.5]" />
+                    <span>{isAr ? 'قبول' : 'Accept'}</span>
                   </button>
 
-                  {/* Toggle Jumpers / Advanced Options */}
+                  {/* Quick Close Button */}
                   <button
-                    onClick={() => setShowJumpers(!showJumpers)}
-                    id="cookie-jumpers-toggle-btn"
-                    className="px-2.5 py-2 text-xs text-[#475569] hover:text-[#0284C7] hover:bg-[#F1EFE9] border border-transparent hover:border-[#D4CEB8] rounded transition-all flex items-center gap-1 cursor-pointer"
-                    title={isAr ? 'تخصيص المفاتيح التقنية' : 'Configure Jumper Pins'}
+                    onClick={() => setIsOpen(false)}
+                    className="p-1 text-[#6F8A7A] hover:text-[#E2E8F0] hover:bg-[#182C20] rounded-[2px] transition-colors cursor-pointer ml-0.5"
+                    title={isAr ? 'إغلاق' : 'Close'}
+                    aria-label="Close cookie notice"
                   >
-                    <Sliders className="w-3.5 h-3.5" />
-                    <span className="text-[11px] font-semibold">{isAr ? 'المفاتيح' : 'PINS'}</span>
+                    <X className="w-3.5 h-3.5" />
                   </button>
 
-                  {/* If Jumpers open, show Save Custom Configuration */}
-                  {showJumpers && (
-                    <button
-                      onClick={() => handleSavePreferences(jumpers)}
-                      id="cookie-save-jumpers-btn"
-                      className="px-3 py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-bold rounded transition-colors flex items-center gap-1.5 cursor-pointer ml-auto"
-                    >
-                      <Check className="w-3.5 h-3.5" />
-                      <span>{isAr ? 'حفظ التكوين' : 'APPLY CONFIG'}</span>
-                    </button>
-                  )}
-                </div>
-
-                {/* Bottom Technical Telemetry Footer Info */}
-                <div className="flex items-center justify-between pt-1 border-t border-[#E2DDD5] text-[10px] text-[#64748B]">
-                  <span className="flex items-center gap-1">
-                    <HardDrive className="w-3 h-3 text-[#94A3B8]" />
-                    <span>{isAr ? 'تخزين محلي بدون تعقب خارجي' : 'NO 3RD-PARTY TRACKERS'}</span>
-                  </span>
-                  <span className="font-mono text-[9px] text-[#94A3B8]">
-                    REV::2026.09 // SHA:0x8F4A
-                  </span>
                 </div>
 
               </div>
             </div>
-          </motion.div>
+          </motion.aside>
         )}
       </AnimatePresence>
     </>
