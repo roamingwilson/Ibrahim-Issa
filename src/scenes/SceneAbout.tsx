@@ -2,7 +2,6 @@ import React from 'react';
 import { Language } from '../types';
 import { motion } from 'motion/react';
 import { Compass, ArrowRight, Layers, Zap, ShieldCheck } from 'lucide-react';
-import { ElectronicButton } from '../components/ElectronicButton';
 
 interface SceneAboutProps {
   lang: Language;
@@ -58,24 +57,20 @@ export const SceneAbout: React.FC<SceneAboutProps> = ({
 
       <div className="max-w-5xl w-full mx-auto space-y-8 relative z-10 text-left rtl:text-right">
         
-        {/* Action Header with Electronic Navigation Button */}
+        {/* Action Header */}
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex items-center justify-end border-b border-[#E8E3DA] pb-3"
         >
-          <ElectronicButton
+          <button
             onClick={onExploreCapabilities}
-            variant="secondary"
-            code="04_SYSTEMS"
-            iconRight={ArrowRight}
-            ledColor="blue"
-            size="sm"
-            isRtl={isAr}
+            className="text-xs font-mono text-[#0284C7] hover:text-[#0369A1] font-bold flex items-center gap-1.5 shrink-0 cursor-pointer"
           >
-            {isAr ? 'الأنظمة البرمجية' : 'Inspect Systems'}
-          </ElectronicButton>
+            <span>{isAr ? 'الأنظمة البرمجية' : 'Inspect Systems'}</span>
+            <ArrowRight className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+          </button>
         </motion.div>
 
         {/* Minimal Headline */}

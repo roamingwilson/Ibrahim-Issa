@@ -3,7 +3,6 @@ import { Language } from '../types';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { motion } from 'motion/react';
 import { Activity, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
-import { ElectronicButton } from '../components/ElectronicButton';
 
 interface SceneImpactProps {
   lang: Language;
@@ -55,24 +54,20 @@ export const SceneImpact: React.FC<SceneImpactProps> = ({
 
       <div className="max-w-5xl w-full mx-auto space-y-8 relative z-10 text-left rtl:text-right">
         
-        {/* Action Header with Electronic Navigation Button */}
+        {/* Action Header */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex items-center justify-end border-b border-[#E8E3DA] pb-3"
         >
-          <ElectronicButton
+          <button
             onClick={onNextScene}
-            variant="secondary"
-            code="03_ARCH"
-            iconRight={ArrowRight}
-            ledColor="blue"
-            size="sm"
-            isRtl={isAr}
+            className="text-xs font-mono text-[#0284C7] hover:text-[#0369A1] font-bold flex items-center gap-1.5 cursor-pointer"
           >
-            {isAr ? 'المبادئ المعمارية' : 'View Principles'}
-          </ElectronicButton>
+            <span>{isAr ? 'المبادئ المعمارية' : 'View Principles'}</span>
+            <ArrowRight className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+          </button>
         </motion.div>
 
         {/* Minimal Statement */}

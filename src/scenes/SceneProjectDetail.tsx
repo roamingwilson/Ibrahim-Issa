@@ -9,7 +9,6 @@ import {
   Mail, 
   FolderGit2
 } from 'lucide-react';
-import { ElectronicButton } from '../components/ElectronicButton';
 
 interface SceneProjectDetailProps {
   lang: Language;
@@ -33,20 +32,16 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
       
       <div className="max-w-5xl w-full mx-auto space-y-5 text-left rtl:text-right my-auto">
         
-        {/* Navigation & Project Selector Header with Electronic Controls */}
+        {/* Navigation & Project Selector Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8E3DA] pb-3">
           <div className="flex items-center gap-3">
-            <ElectronicButton
+            <button
               onClick={onBackToProjects}
-              variant="secondary"
-              code="RETURN"
-              icon={ArrowLeft}
-              ledColor="blue"
-              size="sm"
-              isRtl={isAr}
+              className="px-3 py-1.5 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-1.5 cursor-pointer modern-flat-shadow"
             >
-              {isAr ? 'الرجوع للمشاريع' : 'All Projects'}
-            </ElectronicButton>
+              <ArrowLeft className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+              <span>{isAr ? 'الرجوع للمشاريع' : 'All Projects'}</span>
+            </button>
 
             <div className="text-xs font-mono text-[#8C857D] hidden sm:inline">
               [ {selectedProject.category.toUpperCase()} // {selectedProject.clientOrOrg} ]
@@ -54,23 +49,21 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
           </div>
 
           {/* Quick Switcher among all 4 projects */}
-          <div className="flex items-center gap-1 bg-[#0A140E] border border-[#1E3B27] p-1 rounded-[3px] text-xs font-mono shadow-inner">
+          <div className="flex items-center gap-1 bg-white border border-[#E2DDD5] p-1 text-xs font-mono modern-flat-shadow">
             {PROJECTS.map((proj, idx) => {
               const isActive = proj.id === selectedProject.id;
               return (
-                <motion.button
+                <button
                   key={proj.id}
                   onClick={() => onSelectProject(proj)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-2.5 py-1 transition-all cursor-pointer rounded-[2px] ${
+                  className={`px-2.5 py-1 transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#14261B] text-[#34D399] font-bold border border-[#34D399]/60 shadow-[0_0_8px_rgba(52,211,153,0.3)]'
-                      : 'text-[#6F8A77] hover:text-[#E2E8F0] hover:bg-[#0F1E14]'
+                      ? 'bg-[#1A1816] text-white font-bold'
+                      : 'text-[#6B655F] hover:text-[#1A1816] hover:bg-[#FAF8F5]'
                   }`}
                 >
-                  <span>[0{idx + 1}]</span>
-                </motion.button>
+                  <span>0{idx + 1}</span>
+                </button>
               );
             })}
           </div>
@@ -133,32 +126,23 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
               </div>
             </div>
 
-            {/* Electronic Action Buttons */}
+            {/* Action Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-3">
-              <ElectronicButton
+              <button
                 onClick={() => onProceedToContact(selectedProject.title[lang])}
-                variant="primary"
-                code="DEPLOY_INQ"
-                icon={Mail}
-                ledColor="blue"
-                pulseLed={true}
-                size="md"
-                isRtl={isAr}
+                className="px-5 py-2.5 bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-bold transition-all shadow-md shadow-[#0284C7]/20 flex items-center gap-2 cursor-pointer"
               >
-                {isAr ? 'طلب بناء مشروع مماثل' : 'Inquire Similar Project'}
-              </ElectronicButton>
+                <Mail className="w-3.5 h-3.5" />
+                <span>{isAr ? 'طلب بناء مشروع مماثل' : 'Inquire Similar Project'}</span>
+              </button>
 
-              <ElectronicButton
+              <button
                 onClick={onBackToProjects}
-                variant="secondary"
-                code="CATALOG"
-                icon={FolderGit2}
-                ledColor="amber"
-                size="md"
-                isRtl={isAr}
+                className="px-4 py-2.5 bg-[#FAF8F5] hover:bg-white border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-1.5 cursor-pointer"
               >
-                {isAr ? 'بقية المشاريع' : 'Other Cases'}
-              </ElectronicButton>
+                <FolderGit2 className="w-3.5 h-3.5 text-[#0284C7]" />
+                <span>{isAr ? 'بقية المشاريع' : 'Other Cases'}</span>
+              </button>
             </div>
 
           </div>

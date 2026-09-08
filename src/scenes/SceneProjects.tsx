@@ -10,7 +10,6 @@ import {
   Maximize2,
   Laptop
 } from 'lucide-react';
-import { ElectronicButton } from '../components/ElectronicButton';
 
 interface SceneProjectsProps {
   lang: Language;
@@ -49,39 +48,27 @@ export const SceneProjects: React.FC<SceneProjectsProps> = ({
             </span>
           </div>
 
-          {/* Electronic Project Direct Selector Tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-[#0A140E] border border-[#1E3B27] rounded-[3px] text-xs font-mono shadow-inner overflow-x-auto no-scrollbar">
+          {/* Project Direct Selector Tabs */}
+          <div className="flex items-center gap-1.5 p-1 bg-white border border-[#E2DDD5] text-xs font-mono modern-flat-shadow">
             {PROJECTS.map((proj, idx) => {
               const isActive = idx === selectedProjectIndex;
               return (
-                <motion.button
+                <button
                   key={proj.id}
                   onClick={() => onSelectProjectIndex(idx)}
-                  whileHover={{ scale: 1.03, y: -1 }}
-                  whileTap={{ scale: 0.96 }}
-                  transition={{ type: 'spring', stiffness: 450, damping: 25 }}
-                  className={`px-2.5 sm:px-3 py-1.5 transition-all cursor-pointer flex items-center gap-1.5 rounded-[2px] ${
+                  className={`px-3 py-1.5 transition-all cursor-pointer flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-[#14261B] text-[#E2E8F0] font-bold border border-[#34D399]/60 shadow-[0_0_10px_rgba(52,211,153,0.2)]'
-                      : 'text-[#8CA393] hover:text-[#E2E8F0] hover:bg-[#0F1E14] border border-transparent'
+                      ? 'bg-[#1A1816] text-white font-bold'
+                      : 'text-[#6B655F] hover:text-[#1A1816] hover:bg-[#FAF8F5]'
                   }`}
                 >
-                  <span className="relative flex items-center justify-center">
-                    <span
-                      className={`w-1.5 h-1.5 rounded-full ${
-                        isActive
-                          ? 'bg-[#34D399] shadow-[0_0_6px_#34D399]'
-                          : 'bg-[#3A5643]'
-                      }`}
-                    />
-                  </span>
-                  <span className={isActive ? 'text-[#38BDF8]' : 'text-[#6F8A77]'}>
-                    [PRJ_0{idx + 1}]
+                  <span className={isActive ? 'text-[#0284C7]' : 'text-[#8C857D]'}>
+                    0{idx + 1}
                   </span>
                   <span className="hidden sm:inline font-syne">
                     {proj.title[lang].split(' ')[0]}
                   </span>
-                </motion.button>
+                </button>
               );
             })}
           </div>
@@ -149,21 +136,16 @@ export const SceneProjects: React.FC<SceneProjectsProps> = ({
                   ))}
                 </div>
 
-                {/* Electronic Action Button */}
+                {/* Action Button */}
                 <div className="pt-2">
-                  <ElectronicButton
+                  <button
                     onClick={() => onViewProjectDetail(currentProject)}
-                    variant="primary"
-                    code="CASE_STUDY"
-                    icon={Maximize2}
-                    iconRight={ArrowRight}
-                    ledColor="blue"
-                    pulseLed={true}
-                    size="md"
-                    isRtl={isAr}
+                    className="px-5 py-2.5 bg-[#1A1816] hover:bg-[#0284C7] text-white text-xs font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
                   >
-                    {isAr ? 'التحليل المعماري للمشروع' : 'Inspect Case Study'}
-                  </ElectronicButton>
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    <span>{isAr ? 'التحليل المعماري للمشروع' : 'Inspect Case Study'}</span>
+                    <ArrowRight className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+                  </button>
                 </div>
 
               </div>
@@ -220,46 +202,35 @@ export const SceneProjects: React.FC<SceneProjectsProps> = ({
           </AnimatePresence>
         </div>
 
-        {/* Project Stage Navigation Bar with Electronic Buttons */}
+        {/* Project Stage Navigation Bar */}
         <div className="flex items-center justify-between pt-1">
           <div className="flex items-center gap-2">
-            <ElectronicButton
+            <button
               onClick={handlePrev}
-              variant="secondary"
-              code="PREV"
-              icon={ChevronLeft}
-              ledColor="blue"
-              size="sm"
-              isRtl={isAr}
+              className="px-3.5 py-2 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-1.5 cursor-pointer modern-flat-shadow"
               title="Previous project"
             >
-              {isAr ? 'السابق' : 'Prev'}
-            </ElectronicButton>
+              <ChevronLeft className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+              <span>{isAr ? 'السابق' : 'Prev'}</span>
+            </button>
 
-            <ElectronicButton
+            <button
               onClick={handleNext}
-              variant="secondary"
-              code="NEXT"
-              iconRight={ChevronRight}
-              ledColor="blue"
-              size="sm"
-              isRtl={isAr}
+              className="px-3.5 py-2 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-1.5 cursor-pointer modern-flat-shadow"
               title="Next project"
             >
-              {isAr ? 'التالي' : 'Next'}
-            </ElectronicButton>
+              <span>{isAr ? 'التالي' : 'Next'}</span>
+              <ChevronRight className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+            </button>
           </div>
 
-          <ElectronicButton
+          <button
             onClick={() => onViewProjectDetail(currentProject)}
-            variant="ghost"
-            code="SPECS"
-            iconRight={ArrowRight}
-            size="sm"
-            isRtl={isAr}
+            className="text-xs font-mono text-[#0284C7] hover:text-[#0369A1] font-bold flex items-center gap-1.5 cursor-pointer"
           >
-            {isAr ? 'التفاصيل والمعمارية' : 'Case Study Details'}
-          </ElectronicButton>
+            <span>{isAr ? 'التفاصيل والمعمارية' : 'Case Study Details'}</span>
+            <ArrowRight className={`w-3.5 h-3.5 ${isAr ? 'rotate-180' : ''}`} />
+          </button>
         </div>
 
       </div>
