@@ -28,12 +28,12 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
   const isAr = lang === 'ar';
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-12 py-16 relative overflow-hidden">
+    <div className="w-full h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-8 lg:px-12 pt-20 sm:pt-22 pb-6 relative scene-scroll allow-native-scroll">
       
-      <div className="max-w-5xl w-full mx-auto space-y-5 text-left rtl:text-right my-auto">
+      <div className="max-w-5xl w-full mx-auto space-y-3 sm:space-y-4 text-left rtl:text-right my-auto">
         
         {/* Navigation & Project Selector Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8E3DA] pb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 border-b border-[#E8E3DA] pb-2 sm:pb-3">
           <div className="flex items-center gap-3">
             <button
               onClick={onBackToProjects}
@@ -70,18 +70,18 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
         </div>
 
         {/* Clean Case Study Grid */}
-        <div className="border border-[#E2DDD5] bg-white p-6 sm:p-8 modern-elevated-shadow grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="border border-[#E2DDD5] bg-white p-4 sm:p-6 lg:p-7 modern-elevated-shadow grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start">
           
           {/* Left Column: Problem, Architecture & Solution */}
-          <div className="lg:col-span-7 space-y-4">
+          <div className="lg:col-span-7 space-y-2.5 sm:space-y-3.5">
             
             {/* Title & Category */}
-            <div className="space-y-1">
-              <div className="text-xs font-mono text-[#0284C7] font-bold">
+            <div className="space-y-0.5">
+              <div className="text-[11px] sm:text-xs font-mono text-[#0284C7] font-bold">
                 {selectedProject.year}
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1A1816] font-syne tracking-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#1A1816] font-syne tracking-tight">
                 {selectedProject.title[lang]}
               </h2>
 
@@ -95,7 +95,7 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
               <span className="text-[10px] font-mono text-[#0284C7] font-bold uppercase tracking-wider">
                 {isAr ? 'التحدي الهندسي:' : 'THE CHALLENGE:'}
               </span>
-              <p className="text-xs sm:text-sm text-[#38332E] leading-relaxed bg-[#FAF8F5] p-3 border border-[#E8E3DA]">
+              <p className="text-xs sm:text-sm text-[#38332E] leading-relaxed bg-[#FAF8F5] p-2.5 sm:p-3 border border-[#E8E3DA]">
                 {selectedProject.challenge[lang]}
               </p>
             </div>
@@ -112,11 +112,11 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
             </div>
 
             {/* 3 Key Delivered Features */}
-            <div className="space-y-1.5 pt-1">
+            <div className="space-y-1 pt-0.5">
               <span className="text-[10px] font-mono text-[#8C857D] font-bold uppercase tracking-wider">
                 {isAr ? 'الميزات المنفذة:' : 'DELIVERED:'}
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
                 {selectedProject.features[lang].slice(0, 3).map((feat, fIdx) => (
                   <div key={fIdx} className="flex items-center gap-2 text-xs text-[#443E38]">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
@@ -127,10 +127,10 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            <div className="pt-1 flex flex-wrap items-center gap-2 sm:gap-3">
               <button
                 onClick={() => onProceedToContact(selectedProject.title[lang])}
-                className="px-5 py-2.5 bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-bold transition-all shadow-md shadow-[#0284C7]/20 flex items-center gap-2 cursor-pointer"
+                className="px-4 py-2 sm:px-5 sm:py-2.5 bg-[#0284C7] hover:bg-[#0369A1] text-white text-xs font-bold transition-all shadow-md shadow-[#0284C7]/20 flex items-center gap-2 cursor-pointer"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>{isAr ? 'طلب بناء مشروع مماثل' : 'Inquire Similar Project'}</span>
@@ -138,7 +138,7 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
 
               <button
                 onClick={onBackToProjects}
-                className="px-4 py-2.5 bg-[#FAF8F5] hover:bg-white border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-1.5 cursor-pointer"
+                className="px-3.5 py-2 sm:px-4 sm:py-2.5 bg-[#FAF8F5] hover:bg-white border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-1.5 cursor-pointer"
               >
                 <FolderGit2 className="w-3.5 h-3.5 text-[#0284C7]" />
                 <span>{isAr ? 'بقية المشاريع' : 'Other Cases'}</span>
@@ -148,17 +148,17 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
           </div>
 
           {/* Right Column: Telemetry & Verified Numbers */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-5 space-y-3 sm:space-y-4">
             
             {/* Live Telemetry Panel */}
-            <div className="p-4 bg-[#FAF8F5] border border-[#E8E3DA] modern-flat-shadow space-y-2.5">
-              <div className="flex items-center justify-between text-xs font-mono border-b border-[#E8E3DA] pb-2">
+            <div className="p-3.5 sm:p-4 bg-[#FAF8F5] border border-[#E8E3DA] modern-flat-shadow space-y-2">
+              <div className="flex items-center justify-between text-xs font-mono border-b border-[#E8E3DA] pb-1.5">
                 <span className="text-[#0284C7] font-bold">TECH STACK AUDIT</span>
                 <span className="text-emerald-700 font-semibold text-[10px]">PRODUCTION READY</span>
               </div>
 
-              <div className="space-y-1.5 text-xs font-mono">
-                <div className="flex items-center justify-between p-2 bg-white border border-[#E2DDD5]">
+              <div className="space-y-1 text-xs font-mono">
+                <div className="flex items-center justify-between p-1.5 sm:p-2 bg-white border border-[#E2DDD5]">
                   <span className="text-[#6B655F]">STACK</span>
                   <span className="text-[#1A1816] font-bold">
                     {selectedProject.category === 'flutter' 
@@ -169,7 +169,7 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between p-2 bg-white border border-[#E2DDD5]">
+                <div className="flex items-center justify-between p-1.5 sm:p-2 bg-white border border-[#E2DDD5]">
                   <span className="text-[#6B655F]">PLATFORM</span>
                   <span className="text-[#0284C7] font-bold">
                     {selectedProject.category === 'flutter' 
@@ -180,7 +180,7 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between p-2 bg-white border border-[#E2DDD5]">
+                <div className="flex items-center justify-between p-1.5 sm:p-2 bg-white border border-[#E2DDD5]">
                   <span className="text-[#6B655F]">DATA CACHE</span>
                   <span className="text-emerald-700 font-bold">SQLITE & EDGE</span>
                 </div>
@@ -190,8 +190,8 @@ export const SceneProjectDetail: React.FC<SceneProjectDetailProps> = ({
             {/* Metrics Breakdown */}
             <div className="grid grid-cols-2 gap-2">
               {selectedProject.metrics.slice(0, 2).map((m, idx) => (
-                <div key={idx} className="p-3 bg-[#FAF8F5] border border-[#E8E3DA] text-center space-y-0.5">
-                  <div className="text-lg font-bold font-syne text-[#1A1816]">{m.value}</div>
+                <div key={idx} className="p-2 sm:p-2.5 bg-[#FAF8F5] border border-[#E8E3DA] text-center space-y-0.5">
+                  <div className="text-base sm:text-lg font-bold font-syne text-[#1A1816]">{m.value}</div>
                   <div className="text-[10px] font-mono text-[#6B655F] truncate">{m.label[lang]}</div>
                 </div>
               ))}

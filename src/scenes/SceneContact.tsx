@@ -35,7 +35,7 @@ export const SceneContact: React.FC<SceneContactProps> = ({
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-12 py-16 relative overflow-hidden">
+    <div className="w-full h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-8 lg:px-12 pt-20 sm:pt-22 pb-6 relative scene-scroll allow-native-scroll">
       
       {/* Background Architectural Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-15">
@@ -44,21 +44,21 @@ export const SceneContact: React.FC<SceneContactProps> = ({
         </div>
       </div>
 
-      <div className="max-w-3xl w-full mx-auto text-center space-y-6 relative z-10">
+      <div className="max-w-3xl w-full mx-auto text-center space-y-3 sm:space-y-4 md:space-y-5 my-auto relative z-10">
         
         {/* Monumental Headline */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="space-y-3"
+          className="space-y-2 sm:space-y-2.5"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] text-xs font-mono font-bold tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 sm:py-1 bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] text-[11px] sm:text-xs font-mono font-bold tracking-wider">
             <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
             <span>{isAr ? 'متاح للعمل والتعاقد الفوري' : 'AVAILABLE FOR IMMEDIATE HIRE'}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1A1816] font-syne tracking-tight leading-[1.15]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#1A1816] font-syne tracking-tight leading-tight">
             {isAr ? (
               <>
                 لنبنِ شيئًا <span className="text-[#0284C7]">يستحق</span> أن يُستخدم.
@@ -82,30 +82,30 @@ export const SceneContact: React.FC<SceneContactProps> = ({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto pt-1 text-left rtl:text-right"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 max-w-xl mx-auto pt-0.5 text-left rtl:text-right"
         >
           {/* Upwork Profile Card */}
           <a
             href={PERSONAL_INFO.upwork}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 bg-white hover:bg-[#F0FDF4] border-2 border-[#14A800] hover:border-[#108A00] transition-all modern-flat-shadow group cursor-pointer block"
+            className="p-3 sm:p-3.5 bg-white hover:bg-[#F0FDF4] border-2 border-[#14A800] hover:border-[#108A00] transition-all modern-flat-shadow group cursor-pointer block"
           >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#14A800]">
-                <Briefcase className="w-4 h-4 text-[#14A800]" />
+                <Briefcase className="w-3.5 h-3.5 text-[#14A800]" />
                 <span>UPWORK</span>
               </div>
-              <span className="px-2 py-0.5 bg-[#DCFCE7] text-[#166534] text-[10px] font-mono font-bold flex items-center gap-1">
+              <span className="px-1.5 py-0.5 bg-[#DCFCE7] text-[#166534] text-[9px] font-mono font-bold flex items-center gap-1">
                 <ShieldCheck className="w-3 h-3 text-[#166534]" />
                 <span>{isAr ? 'موثق' : 'Verified'}</span>
               </span>
             </div>
-            <h3 className="text-sm font-bold text-[#1A1816] font-syne group-hover:text-[#14A800] transition-colors flex items-center justify-between">
+            <h3 className="text-xs sm:text-sm font-bold text-[#1A1816] font-syne group-hover:text-[#14A800] transition-colors flex items-center justify-between">
               <span>{isAr ? 'ملفي على Upwork' : 'Hire on Upwork'}</span>
               <ExternalLink className="w-3.5 h-3.5 text-[#14A800] group-hover:translate-x-0.5 transition-transform" />
             </h3>
-            <p className="text-[11px] text-[#6B655F] mt-1 line-clamp-2">
+            <p className="text-[10px] sm:text-[11px] text-[#6B655F] mt-1 line-clamp-2">
               {isAr ? 'عقود برمجية مضمونة بالساعة أو بالمشروع مع حماية الدفع.' : 'Escrow-protected hourly or fixed-price contracts for web & mobile.'}
             </p>
           </a>
@@ -115,22 +115,22 @@ export const SceneContact: React.FC<SceneContactProps> = ({
             href={PERSONAL_INFO.mostaql}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 bg-white hover:bg-amber-50/60 border border-amber-300 hover:border-amber-400 transition-all modern-flat-shadow group cursor-pointer block"
+            className="p-3 sm:p-3.5 bg-white hover:bg-amber-50/60 border border-amber-300 hover:border-amber-400 transition-all modern-flat-shadow group cursor-pointer block"
           >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-900">
-                <Star className="w-4 h-4 text-amber-600 fill-amber-500" />
+                <Star className="w-3.5 h-3.5 text-amber-600 fill-amber-500" />
                 <span>MOSTAQL</span>
               </div>
-              <span className="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-mono font-bold">
+              <span className="px-1.5 py-0.5 bg-amber-100 text-amber-900 text-[9px] font-mono font-bold">
                 5.0 ★
               </span>
             </div>
-            <h3 className="text-sm font-bold text-[#1A1816] font-syne group-hover:text-amber-900 transition-colors flex items-center justify-between">
+            <h3 className="text-xs sm:text-sm font-bold text-[#1A1816] font-syne group-hover:text-amber-900 transition-colors flex items-center justify-between">
               <span>{isAr ? 'ملفي على مستقل' : 'Hire on Mostaql'}</span>
               <ExternalLink className="w-3.5 h-3.5 text-amber-700 group-hover:translate-x-0.5 transition-transform" />
             </h3>
-            <p className="text-[11px] text-[#6B655F] mt-1 line-clamp-2">
+            <p className="text-[10px] sm:text-[11px] text-[#6B655F] mt-1 line-clamp-2">
               {isAr ? 'حساب مستقل: ibrahimphp، تقييم 5 نجوم ورضا كامل للعملاء.' : 'Mostaql profile (ibrahimphp) with 5.0 star rating and 100% satisfaction.'}
             </p>
           </a>
@@ -141,11 +141,11 @@ export const SceneContact: React.FC<SceneContactProps> = ({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="max-w-xl mx-auto pt-1"
+          className="max-w-xl mx-auto pt-0.5"
         >
-          <div className="flex items-center justify-between p-2 bg-white border border-[#E2DDD5] modern-flat-shadow hover:border-[#0284C7] transition-all">
-            <div className="flex items-center gap-2.5 px-3">
-              <Mail className="w-4 h-4 text-[#0284C7]" />
+          <div className="flex items-center justify-between p-1.5 sm:p-2 bg-white border border-[#E2DDD5] modern-flat-shadow hover:border-[#0284C7] transition-all">
+            <div className="flex items-center gap-2 px-2 sm:px-3">
+              <Mail className="w-3.5 h-3.5 text-[#0284C7]" />
               <span className="font-mono text-xs sm:text-sm font-bold text-[#1A1816]">
                 {PERSONAL_INFO.email}
               </span>
@@ -153,7 +153,7 @@ export const SceneContact: React.FC<SceneContactProps> = ({
 
             <button
               onClick={handleCopyEmail}
-              className="px-3.5 py-1.5 bg-[#FAF8F5] hover:bg-[#F0F9FF] text-xs font-mono font-bold text-[#1A1816] border border-[#E8E3DA] flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 py-1 sm:py-1.5 bg-[#FAF8F5] hover:bg-[#F0F9FF] text-xs font-mono font-bold text-[#1A1816] border border-[#E8E3DA] flex items-center gap-1.5 transition-all cursor-pointer"
             >
               {copied ? (
                 <>
@@ -175,13 +175,13 @@ export const SceneContact: React.FC<SceneContactProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap items-center justify-center gap-3 pt-1"
+          className="flex flex-wrap items-center justify-center gap-2.5 pt-0.5"
         >
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
+            className="px-3.5 py-1.5 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
           >
             <Github className="w-3.5 h-3.5 text-[#0284C7]" />
             <span>GitHub</span>
@@ -192,7 +192,7 @@ export const SceneContact: React.FC<SceneContactProps> = ({
             href={PERSONAL_INFO.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
+            className="px-3.5 py-1.5 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
           >
             <Linkedin className="w-3.5 h-3.5 text-[#0284C7]" />
             <span>LinkedIn</span>
@@ -201,7 +201,7 @@ export const SceneContact: React.FC<SceneContactProps> = ({
         </motion.div>
 
         {/* Restart Experience Link */}
-        <div className="pt-6 border-t border-[#E8E3DA] flex items-center justify-between text-xs font-mono text-[#8C857D] max-w-xl mx-auto">
+        <div className="pt-3 sm:pt-4 border-t border-[#E8E3DA] flex items-center justify-between text-[11px] sm:text-xs font-mono text-[#8C857D] max-w-xl mx-auto">
           <span>{PERSONAL_INFO.name[lang]} • {new Date().getFullYear()}</span>
 
           <button

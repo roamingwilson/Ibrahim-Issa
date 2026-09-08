@@ -45,7 +45,7 @@ export const SceneAbout: React.FC<SceneAboutProps> = ({
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-12 py-16 relative overflow-hidden">
+    <div className="w-full h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-8 lg:px-12 pt-20 sm:pt-22 pb-6 relative scene-scroll allow-native-scroll">
       
       {/* Background Architectural Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -55,14 +55,14 @@ export const SceneAbout: React.FC<SceneAboutProps> = ({
         </div>
       </div>
 
-      <div className="max-w-5xl w-full mx-auto space-y-8 relative z-10 text-left rtl:text-right">
+      <div className="max-w-5xl w-full mx-auto space-y-4 sm:space-y-5 md:space-y-6 my-auto relative z-10 text-left rtl:text-right">
         
         {/* Action Header */}
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center justify-end border-b border-[#E8E3DA] pb-3"
+          className="flex items-center justify-end border-b border-[#E8E3DA] pb-2 sm:pb-3"
         >
           <button
             onClick={onExploreCapabilities}
@@ -79,7 +79,7 @@ export const SceneAbout: React.FC<SceneAboutProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1A1816] font-syne tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1A1816] font-syne tracking-tight">
             {isAr ? (
               <>
                 منطق برمجي واضح،{' '}
@@ -99,14 +99,14 @@ export const SceneAbout: React.FC<SceneAboutProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2"
+          className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-5 pt-1 sm:pt-2"
         >
           {principles.map((item, idx) => {
             const IconComponent = item.icon;
             return (
               <div 
                 key={idx}
-                className="p-6 bg-white border border-[#E2DDD5] modern-flat-shadow space-y-3 hover:border-[#0284C7] transition-all"
+                className="p-4 sm:p-5 lg:p-6 bg-white border border-[#E2DDD5] modern-flat-shadow space-y-2 hover:border-[#0284C7] transition-all"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono text-[#8C857D] font-bold">
@@ -115,9 +115,13 @@ export const SceneAbout: React.FC<SceneAboutProps> = ({
                   <IconComponent className="w-4 h-4 text-[#0284C7]" />
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-[#1A1816] font-syne pt-1">
+                <h3 className="text-lg sm:text-xl font-bold text-[#1A1816] font-syne">
                   {item.title[lang]}
                 </h3>
+
+                <p className="text-xs sm:text-sm text-[#554F48] leading-relaxed line-clamp-3">
+                  {item.summary[lang]}
+                </p>
               </div>
             );
           })}

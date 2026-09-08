@@ -84,8 +84,20 @@ export const PortfolioStage: React.FC<PortfolioStageProps> = ({
     const handleWheel = (e: WheelEvent) => {
       // Check if user is scrolling inside an element that explicitly allows internal scroll
       const target = e.target as HTMLElement | null;
-      if (target && target.closest('.allow-native-scroll')) {
-        return;
+      const scrollable = target ? (target.closest('.allow-native-scroll') as HTMLElement | null) : null;
+      if (scrollable) {
+        const maxScroll = scrollable.scrollHeight - scrollable.clientHeight;
+        if (maxScroll > 15) {
+          const isScrollingDown = e.deltaY > 0;
+          const isScrollingUp = e.deltaY < 0;
+          const atBottom = scrollable.scrollTop >= maxScroll - 8;
+          const atTop = scrollable.scrollTop <= 8;
+
+          if ((isScrollingDown && !atBottom) || (isScrollingUp && !atTop)) {
+            // Allow natural internal scrolling inside the scene container
+            return;
+          }
+        }
       }
 
       e.preventDefault();
@@ -160,6 +172,18 @@ export const PortfolioStage: React.FC<PortfolioStageProps> = ({
 
       const diffY = touchEndY - touchStartY.current;
       const diffX = touchEndX - touchStartX.current;
+
+      const target = e.target as HTMLElement | null;
+      const scrollable = target ? (target.closest('.allow-native-scroll') as HTMLElement | null) : null;
+      if (scrollable) {
+        const maxScroll = scrollable.scrollHeight - scrollable.clientHeight;
+        if (maxScroll > 15) {
+          const atBottom = scrollable.scrollTop >= maxScroll - 8;
+          const atTop = scrollable.scrollTop <= 8;
+          if (diffY < 0 && !atBottom) return; // scrolling down
+          if (diffY > 0 && !atTop) return; // scrolling up
+        }
+      }
 
       // Ensure vertical swipe has higher magnitude than horizontal
       if (Math.abs(diffY) > 45 && Math.abs(diffY) > Math.abs(diffX) * 1.2) {

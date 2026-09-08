@@ -43,7 +43,7 @@ export const SceneImpact: React.FC<SceneImpactProps> = ({
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-12 py-16 relative overflow-hidden">
+    <div className="w-full h-full flex flex-col justify-start sm:justify-center items-center px-4 sm:px-8 lg:px-12 pt-20 sm:pt-22 pb-6 relative scene-scroll allow-native-scroll">
       
       {/* Background Architectural Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -52,14 +52,14 @@ export const SceneImpact: React.FC<SceneImpactProps> = ({
         </div>
       </div>
 
-      <div className="max-w-5xl w-full mx-auto space-y-8 relative z-10 text-left rtl:text-right">
+      <div className="max-w-5xl w-full mx-auto space-y-4 sm:space-y-6 md:space-y-7 my-auto relative z-10 text-left rtl:text-right">
         
         {/* Action Header */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center justify-end border-b border-[#E8E3DA] pb-3"
+          className="flex items-center justify-end border-b border-[#E8E3DA] pb-2 sm:pb-3"
         >
           <button
             onClick={onNextScene}
@@ -75,9 +75,9 @@ export const SceneImpact: React.FC<SceneImpactProps> = ({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="space-y-2"
+          className="space-y-1.5"
         >
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1A1816] font-syne tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1A1816] font-syne tracking-tight">
             {isAr ? (
               <>
                 أرقام مثبتة من <span className="text-[#0284C7]">بيئات العمل الحية</span>.
@@ -95,20 +95,23 @@ export const SceneImpact: React.FC<SceneImpactProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-5 pt-1 sm:pt-2"
         >
           {metrics.map((item, idx) => (
             <div
               key={idx}
-              className="p-6 bg-white border border-[#E2DDD5] modern-flat-shadow hover:border-[#0284C7] transition-all space-y-3"
+              className="p-3.5 sm:p-5 bg-white border border-[#E2DDD5] modern-flat-shadow hover:border-[#0284C7] transition-all space-y-1.5 sm:space-y-2.5"
             >
-              <div className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold font-syne ${item.accent} tracking-tight`}>
+              <div className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold font-syne ${item.accent} tracking-tight`}>
                 {item.value}
               </div>
 
-              <div className="pt-2 border-t border-[#EFECE6]">
-                <div className="text-sm sm:text-base font-bold text-[#1A1816] font-syne">
+              <div className="pt-1.5 sm:pt-2 border-t border-[#EFECE6] space-y-0.5">
+                <div className="text-xs sm:text-sm font-bold text-[#1A1816] font-syne truncate">
                   {item.label[lang]}
+                </div>
+                <div className="text-[10px] sm:text-[11px] font-mono text-[#6B655F] truncate">
+                  {item.detail[lang]}
                 </div>
               </div>
             </div>

@@ -55,8 +55,8 @@ export const ParticleTextCanvas: React.FC<ParticleTextCanvasProps> = ({
       if (!isMounted) return;
       try {
         const rect = container.getBoundingClientRect();
-        const width = Math.max(300, Math.floor(rect.width));
-        const height = Math.max(130, Math.floor(rect.height));
+        const width = Math.max(280, Math.floor(rect.width));
+        const height = Math.max(50, Math.floor(rect.height || 100));
 
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         canvas.width = width * dpr;
