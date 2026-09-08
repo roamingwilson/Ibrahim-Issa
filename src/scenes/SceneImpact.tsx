@@ -19,25 +19,25 @@ export const SceneImpact: React.FC<SceneImpactProps> = ({
     {
       value: '6+',
       label: { en: 'Years in Production', ar: 'سنوات في الإنتاج' },
-      detail: { en: 'Web & Mobile Systems', ar: 'منظومات ويب وهاتف' },
+      detail: { en: 'Full-Stack & Mobile', ar: 'تطوير الويب والهاتف' },
       accent: 'text-[#1A1816]',
     },
     {
-      value: '35+',
-      label: { en: 'Shipped Products', ar: 'منتجاً تم إطلاقه' },
-      detail: { en: 'Enterprise & Startups', ar: 'شركات ناشئة ومؤسسات' },
+      value: '5.0 ★',
+      label: { en: 'Mostaql Rating', ar: 'تقييم ممتاز في مستقل' },
+      detail: { en: '100% Client Satisfaction', ar: 'رضا كامل للعملاء' },
       accent: 'text-[#0284C7]',
     },
     {
-      value: '< 140ms',
-      label: { en: 'Edge Latency', ar: 'سرعة استجابة الخادم' },
-      detail: { en: 'Sub-second response', ar: 'استجابة فائقة السرعة' },
+      value: '35+',
+      label: { en: 'Shipped Projects', ar: 'مشروعاً تم إطلاقه' },
+      detail: { en: 'Web & Mobile Systems', ar: 'منظومات ويب وهاتف' },
       accent: 'text-[#1A1816]',
     },
     {
       value: 'iOS & Android',
       label: { en: 'Mobile Platforms', ar: 'منصات الهواتف' },
-      detail: { en: 'Native Flutter apps', ar: 'تطبيقات فلاتر أصلية' },
+      detail: { en: 'Flutter & Native Apps', ar: 'تطبيقات فلاتر أصلية' },
       accent: 'text-[#0284C7]',
     },
   ];

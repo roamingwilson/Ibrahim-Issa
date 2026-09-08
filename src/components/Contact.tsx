@@ -10,7 +10,11 @@ import {
   ShieldCheck, 
   Clock, 
   MapPin, 
-  Sparkles
+  Sparkles,
+  ExternalLink,
+  Star,
+  Github,
+  Linkedin
 } from 'lucide-react';
 
 interface ContactProps {
@@ -146,9 +150,64 @@ export const Contact: React.FC<ContactProps> = ({ lang, prefilledSubject = '' })
               </h4>
               <p className="text-xs text-[#285A43] leading-relaxed">
                 {isAr
-                  ? 'متاح لبدء مشاريع جديدة بدوام كامل أو تعاقد جزئي.'
-                  : 'Open for full-time contracts or selected project builds.'}
+                  ? 'متاح لبدء مشاريع جديدة عبر منصة مستقل أو التعاقد الحر.'
+                  : 'Open for project builds on Mostaql or direct remote contracts.'}
               </p>
+            </div>
+
+            {/* Mostaql Official Profile Card */}
+            <div className="p-6 border border-amber-200 bg-amber-50/70 space-y-3 modern-flat-shadow">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-mono text-amber-900 font-bold">
+                  <Star className="w-4 h-4 text-amber-600 fill-amber-500" />
+                  <span>{isAr ? 'منصة مستقل' : 'MOSTAQL PROFILE'}</span>
+                </div>
+                <span className="px-2 py-0.5 bg-amber-200/60 text-amber-900 text-[10px] font-mono font-bold">
+                  5.0 ★
+                </span>
+              </div>
+              <div className="space-y-1">
+                <h4 className="text-base font-bold text-amber-950 font-syne">
+                  {isAr ? 'الملف الشخصي وتقييمات العملاء' : 'Official Mostaql Freelance Profile'}
+                </h4>
+                <p className="text-xs text-amber-900/80 leading-relaxed font-mono">
+                  mostaql.com/u/ibrahimphp
+                </p>
+              </div>
+              <a
+                href={PERSONAL_INFO.mostaql}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-amber-900 hover:bg-amber-950 text-white text-xs font-bold transition-all shadow-xs"
+              >
+                <span>{isAr ? 'زيارة ملفي والتوظيف في مستقل' : 'Hire on Mostaql'}</span>
+                <ExternalLink className="w-3.5 h-3.5 text-amber-300" />
+              </a>
+            </div>
+
+            {/* Social & Professional Links (GitHub, LinkedIn) */}
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center justify-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
+              >
+                <Github className="w-4 h-4 text-[#0284C7]" />
+                <span className="font-semibold">GitHub</span>
+                <ExternalLink className="w-3 h-3 text-[#8C857D]" />
+              </a>
+
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center justify-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
+              >
+                <Linkedin className="w-4 h-4 text-[#0284C7]" />
+                <span className="font-semibold">LinkedIn</span>
+                <ExternalLink className="w-3 h-3 text-[#8C857D]" />
+              </a>
             </div>
 
           </div>

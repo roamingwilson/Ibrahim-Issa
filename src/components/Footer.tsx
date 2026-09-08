@@ -1,7 +1,7 @@
 import React from 'react';
 import { Language } from '../types';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Github, Linkedin } from 'lucide-react';
 
 interface FooterProps {
   lang: Language;
@@ -34,10 +34,19 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-6 font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-medium">
             <a href="#about" className="hover:text-[#0284C7] transition-colors">{isAr ? 'عن إبراهيم' : 'About'}</a>
             <a href="#expertise" className="hover:text-[#0284C7] transition-colors">{isAr ? 'المعمارية' : 'Architecture'}</a>
             <a href="#projects" className="hover:text-[#0284C7] transition-colors">{isAr ? 'المشاريع' : 'Work'}</a>
+            <a href={PERSONAL_INFO.mostaql} target="_blank" rel="noopener noreferrer" className="hover:text-amber-600 font-bold transition-colors">{isAr ? 'مستقل' : 'Mostaql'}</a>
+            <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer" className="hover:text-[#0284C7] transition-colors flex items-center gap-1">
+              <Github className="w-3.5 h-3.5" />
+              <span>GitHub</span>
+            </a>
+            <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[#0284C7] transition-colors flex items-center gap-1">
+              <Linkedin className="w-3.5 h-3.5" />
+              <span>LinkedIn</span>
+            </a>
             <a href="#contact" className="hover:text-[#0284C7] transition-colors">{isAr ? 'تواصل' : 'Contact'}</a>
           </div>
 
@@ -53,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[11px] text-[#8C857D]">
           <div>
-            © {new Date().getFullYear()} {PERSONAL_INFO.name[lang]}. {isAr ? 'كافة الحقوق محفوظة. معمارية فلاتر والويب المتطورة.' : 'All rights reserved. Engineered with Next.js, React, TypeScript & Flutter architecture.'}
+            © {new Date().getFullYear()} {PERSONAL_INFO.name[lang]}. {isAr ? 'كافة الحقوق محفوظة. تطوير متكامل بـ Flutter و Laravel و React.' : 'All rights reserved. Built with Flutter, React, Laravel & Clean Architecture.'}
           </div>
 
           <div className="flex items-center gap-2">

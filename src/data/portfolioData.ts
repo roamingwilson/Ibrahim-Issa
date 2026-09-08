@@ -1,420 +1,500 @@
 import { Project, Review, SkillCategory, ExperienceItem, SceneInfo, CapabilitySystem } from '../types';
 
 export const SCENES: SceneInfo[] = [
-  { id: 0, code: '01', slug: 'intro', title: { en: 'Intro', ar: 'المقدمة' }, category: { en: 'Identity', ar: 'الهوية' } },
-  { id: 1, code: '02', slug: 'impact', title: { en: 'Impact', ar: 'الأرقام' }, category: { en: 'Verified Metrics', ar: 'مؤشرات الأداء' } },
-  { id: 2, code: '03', slug: 'philosophy', title: { en: 'Philosophy', ar: 'الرؤية' }, category: { en: 'Principles', ar: 'المبادئ المعمارية' } },
-  { id: 3, code: '04', slug: 'capabilities', title: { en: 'Capabilities', ar: 'القدرات' }, category: { en: 'Systems', ar: 'الأنظمة البرمجية' } },
-  { id: 4, code: '05', slug: 'projects', title: { en: 'Selected Work', ar: 'الأعمال' }, category: { en: 'Projects', ar: 'المشاريع الحية' } },
-  { id: 5, code: '06', slug: 'detail', title: { en: 'Case Study', ar: 'التحليل' }, category: { en: 'Deep Dive', ar: 'التحليل المعماري' } },
-  { id: 6, code: '07', slug: 'contact', title: { en: 'Contact', ar: 'التواصل' }, category: { en: 'Collaboration', ar: 'التواصل المباشر' } },
+  { id: 0, code: '01', slug: 'intro', title: { en: 'Intro', ar: 'المقدمة' }, category: { en: 'Identity', ar: 'الهوية الشخصية' } },
+  { id: 1, code: '02', slug: 'impact', title: { en: 'Impact', ar: 'الأرقام' }, category: { en: 'Verified Metrics', ar: 'مؤشرات الأداء والتقييم' } },
+  { id: 2, code: '03', slug: 'philosophy', title: { en: 'Philosophy', ar: 'الرؤية' }, category: { en: 'Principles', ar: 'المبادئ والمعايير' } },
+  { id: 3, code: '04', slug: 'capabilities', title: { en: 'Capabilities', ar: 'القدرات' }, category: { en: 'Systems & Skills', ar: 'الأنظمة والمهارات البرمجية' } },
+  { id: 4, code: '05', slug: 'projects', title: { en: 'Selected Work', ar: 'الأعمال' }, category: { en: 'Projects', ar: 'المشاريع المنفذة' } },
+  { id: 5, code: '06', slug: 'detail', title: { en: 'Case Study', ar: 'التحليل' }, category: { en: 'Deep Dive', ar: 'التفاصيل والمعمارية' } },
+  { id: 6, code: '07', slug: 'contact', title: { en: 'Contact', ar: 'التواصل' }, category: { en: 'Hire on Upwork & Mostaql', ar: 'التوظيف عبر Upwork ومستقل' } },
 ];
 
 export const CAPABILITY_SYSTEMS: CapabilitySystem[] = [
   {
-    id: 'web-system',
+    id: 'php-laravel-system',
     code: 'SYS_01',
-    title: { en: 'Web Engineering', ar: 'هندسة الويب المتقدمة' },
-    subtitle: { en: 'Next.js 15 • React 19 • TypeScript • Tailwind CSS', ar: 'Next.js 15 • React 19 • TypeScript • Tailwind CSS' },
+    title: { en: 'Full-Stack PHP & Laravel', ar: 'تطوير الويب الكامل - PHP ولارافيل' },
+    subtitle: { en: 'PHP 8+ • Laravel 11 • Livewire • MySQL • CodeIgniter • REST APIs', ar: 'PHP 8+ • Laravel 11 • Livewire • MySQL • CodeIgniter • REST APIs' },
     description: {
-      en: 'High-throughput full-stack web platforms built with server streaming, strict typing, and edge caching for sub-second load times.',
-      ar: 'منصات ويب متكاملة مبنية بتقنيات البث من الخادم، الكود الصارم، والتخزين المؤقت على الحافة لسرعة تحميل فائقة بأقل من ثانية.'
+      en: 'High-throughput full-stack web platforms and backend architectures powered by PHP, Laravel, and MySQL with robust database indexing and sub-35ms query latency.',
+      ar: 'منصات ويب متكاملة وخوادم خلفية متينة مبنية بـ PHP و Laravel و MySQL مع فهرسة قواعد بيانات محسنة وزمن استجابة فائق السرعة بأقل من 35ms.'
     },
     metrics: [
-      { value: '< 140ms', label: { en: 'SSR Stream Latency', ar: 'سرعة استجابة الخادم' } },
-      { value: '99/100', label: { en: 'Lighthouse Performance', ar: 'مقياس لايتهاوس للأداء' } },
-      { value: '6+ Years', label: { en: 'Production Web Exp', ar: 'خبرة في بناء منصات الويب' } }
+      { value: '< 35ms', label: { en: 'DB Query Latency', ar: 'سرعة استعلامات MySQL' } },
+      { value: '100%', label: { en: 'Clean PSR Standards', ar: 'معايير الكود النظيف' } },
+      { value: '6+ Years', label: { en: 'Production PHP & Laravel', ar: 'سنوات خبرة برمجية' } }
     ],
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'WebSockets', 'REST / GraphQL', 'Vercel / Docker'],
+    technologies: ['PHP 8+', 'Laravel', 'Livewire', 'CodeIgniter', 'MySQL', 'Node.js', 'REST APIs', 'Web Services'],
     evidence: {
-      badge: '99 LIGHTHOUSE // 200 OK',
-      text: { en: 'Atomic state management with zero client runtime bloat.', ar: 'إدارة حالة خفيفة وسريعة خالية من الأكواد الزائدة.' }
+      badge: 'LARAVEL 11 // PRODUCTION BACKEND',
+      text: { en: 'Optimized Eloquent relationships, caching layers, and secure token authentication.', ar: 'ربط علائقي متقدم، طبقات تخزين مؤقت، ومصادقة مشفرة للبيانات.' }
     },
     highlights: [
-      { en: 'Server Components with instantaneous streaming', ar: 'مكونات خادم تعمل بالبث اللحظي دون انتظار' },
-      { en: 'Strict zero-any TypeScript with runtime contracts', ar: 'أمان نمطي صارم عبر TypeScript بدون أي ثغرات' },
-      { en: 'Full RTL/LTR bidirectional typographic balance', ar: 'تناسق طباعي كامل يدعم الاتجاهين العربي والإنجليزي' }
+      { en: 'Dynamic data filtering and complex multi-parameter database queries', ar: 'برمجة أنظمة التصفية والفلاتر الديناميكية المعقدة للمتاجر' },
+      { en: 'High-concurrency queues and automated background job scheduling', ar: 'معالجة المهام وجدولة العمليات بالخلفية لضمان الاستقرار' },
+      { en: 'Secure RESTful APIs with Sanctum/JWT authentication and clean contracts', ar: 'واجهات API آمنة موثقة وسريعة الاستجابة لربط الويب والهاتف' }
     ]
   },
   {
     id: 'mobile-system',
     code: 'SYS_02',
-    title: { en: 'Flutter Native Mobile', ar: 'تطبيقات فلاتر الأصلية' },
-    subtitle: { en: 'Flutter 3.x • Dart • iOS & Android • Cross-Platform', ar: 'Flutter 3.x • Dart • iOS & Android • متعدد المنصات' },
+    title: { en: 'Cross-Platform Mobile Apps', ar: 'تطبيقات الهواتف الذكية' },
+    subtitle: { en: 'Google Flutter • Dart • React Native • Ionic • iOS & Android', ar: 'Google Flutter • Dart • React Native • Ionic • متعدد المنصات' },
     description: {
-      en: 'Cross-platform mobile apps built with Flutter for iOS and Android, featuring clean architecture, responsive animations, and seamless native device integration.',
-      ar: 'تطبيقات هاتف ذكية متعددة المنصات لنظامي iOS وأندرويد مبنية بفلاتر، بمعمارية نظيفة وتكامل تام مع عتاد الهاتف.'
+      en: 'Modern, responsive cross-platform mobile apps for iOS and Android built with Google Flutter, React Native, and Ionic, featuring clean architecture and offline-first SQLite sync.',
+      ar: 'تطبيقات هواتف ذكية عصرية لنظامي iOS وأندرويد مبنية بـ Flutter و React Native و Ionic، بمعمارية نظيفة ومزامنة محلية دون اتصال بالإنترنت.'
     },
     metrics: [
-      { value: 'iOS & Android', label: { en: 'Mobile Platforms', ar: 'منصتا الهواتف' } },
-      { value: '< 0.05%', label: { en: 'Crash-Free Sessions', ar: 'استقرار تشغيلي تام' } },
-      { value: '15+', label: { en: 'Shipped App Store Apps', ar: 'تطبيقات منشورة على المتاجر' } }
+      { value: 'iOS & Android', label: { en: 'Mobile Platforms', ar: 'كلا نظامي الهواتف' } },
+      { value: '99.9%', label: { en: 'Crash-Free Stability', ar: 'استقرار تشغيلي تام' } },
+      { value: '20+', label: { en: 'Shipped Mobile Apps', ar: 'تطبيقات هاتف تم إطلاقها' } }
     ],
-    technologies: ['Flutter', 'Dart', 'BLoC', 'Riverpod', 'SQLite / Isar', 'Method Channels', 'Push Notifications', 'App Store / Play'],
+    technologies: ['Flutter', 'Dart', 'React Native', 'Ionic', 'BLoC / Riverpod', 'SQLite', 'Background GPS', 'Push Notifications'],
     evidence: {
-      badge: 'FLUTTER NATIVE // IOS & ANDROID',
-      text: { en: 'Heavy computation offloaded to background Dart Isolates.', ar: 'ترحيل العمليات الحسابية إلى مسارات Dart Isolates الخلفية.' }
+      badge: 'FLUTTER & MOBILE // IOS & ANDROID',
+      text: { en: 'Native performance, 60fps animations, and background isolate processing.', ar: 'أداء أصيل وسلاسة فائقة بمعدل 60 إطاراً في الثانية.' }
     },
     highlights: [
-      { en: 'Smooth native gestures and responsive animations on iOS & Android', ar: 'إيماءات سلسة وتفاعلات حركية سريعة على هواتف آيفون وأندرويد' },
-      { en: 'Offline-first SQLite synchronization engine', ar: 'نظام مزامنة محلي يعمل دون اتصال بالإنترنت' },
-      { en: 'Native platform integration (Bluetooth, Camera, Apple Pay)', ar: 'ربط مباشر مع ميزات الهاتف (البلوتوث، الكاميرا، الدفع الإلكتروني)' }
+      { en: 'Smooth native gestures and responsive animations on iOS & Android', ar: 'إيماءات طبيعية وسرعة استجابة على هواتف آيفون وأندرويد' },
+      { en: 'Offline-first SQLite synchronization engine with delta caching', ar: 'نظام مزامنة محلي يعمل بكفاءة تامة حتى دون اتصال بالشبكة' },
+      { en: 'Seamless hardware integration: GPS tracking, camera, biometrics, Apple Pay', ar: 'ربط مباشر مع عتاد الهاتف: التتبع الجغرافي، الكاميرا، والبصمة' }
     ]
   },
   {
-    id: 'architecture-system',
+    id: 'frontend-ui-system',
     code: 'SYS_03',
-    title: { en: 'Clean Architecture', ar: 'المعمارية النظيفة' },
-    subtitle: { en: 'Domain-Driven • Feature-First • Single Source of Truth', ar: 'تصميم مبني على منطق العمل • معمارية قابلة للتوسع' },
+    title: { en: 'Modern Frontend & UI/UX', ar: 'الواجهات التفاعلية وتجربة المستخدم' },
+    subtitle: { en: 'React.js • Next.js • Angular • TypeScript • Tailwind CSS • RTL', ar: 'React.js • Next.js • Angular • TypeScript • Tailwind CSS • RTL' },
     description: {
-      en: 'Decoupled presentation, domain, and data layers that allow web and mobile teams to share business logic and API contracts cleanly.',
-      ar: 'فصل طبقات العرض ومنطق العمل والبيانات، مما يتيح مشاركة المنطق البرمجي وعقود الـ API بين الويب وتطبيقات الهاتف بسلاسة.'
+      en: 'High-speed interactive frontends, responsive web applications, and optimized product catalogs built with React.js, Next.js, and Angular, with native Arabic RTL support.',
+      ar: 'واجهات أمامية تفاعلية فائقة السرعة وتطبيقات متجاوبة مبنية بـ React.js و Next.js و Angular، مع دعم أصيل وتناسق كامل للغة العربية (RTL).'
     },
     metrics: [
-      { value: '100%', label: { en: 'Contract Consistency', ar: 'تطابق عقود البيانات' } },
-      { value: '3x', label: { en: 'Faster Feature Velocity', ar: 'سرعة مضاعفة في إطلاق الميزات' } },
-      { value: '35+', label: { en: 'Production Systems Delivered', ar: 'أنظمة برمجية تم تسليمها' } }
+      { value: '< 160ms', label: { en: 'First Contentful Paint', ar: 'زمن التحميل اللحظي' } },
+      { value: '99/100', label: { en: 'Google Lighthouse', ar: 'مؤشرات الأداء القياسية' } },
+      { value: '100% RTL', label: { en: 'Arabic Typographic Harmony', ar: 'تناسق الواجهات العربية' } }
     ],
-    technologies: ['Clean Architecture', 'Repository Pattern', 'Dependency Injection', 'DTO Mapping', 'CI/CD Pipelines'],
+    technologies: ['React.js', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'HTML5 & CSS3', 'UI/UX Design'],
     evidence: {
-      badge: 'STRICT DDD // ZERO TIGHT-COUPLING',
-      text: { en: 'Independent layers testable in pure isolation.', ar: 'طبقات مستقلة تماماً يمكن اختبارها وتطويرها بشكل معزول.' }
+      badge: 'REACT & NEXT.JS // PIXEL-PERFECT UI',
+      text: { en: 'Zero-bloat component architecture with sub-second page transitions.', ar: 'بنية برمجية خفيفة وسريعة خالية من الأكواد الزائدة وبأعلى دقة.' }
     },
     highlights: [
-      { en: 'Single Source of Truth across Web & Mobile endpoints', ar: 'مصدر بيانات موحد يضمن دقة المعلومات عبر الويب والهاتف' },
-      { en: 'Feature-first modular directory hierarchy', ar: 'تنظيم برمجي للميزات يسهل صيانة الكود بواسطة فرق العمل' },
-      { en: 'Strict isolation of UI from business rules', ar: 'عزل تام لواجهات العرض عن قواعد ومنطق العمل' }
+      { en: 'Component-based modular architecture with high reusability', ar: 'مكونات برمجية قابلة لإعادة الاستخدام والصيانة بسهولة' },
+      { en: 'Flawless Arabic typography with Alexandria & Readex Pro font systems', ar: 'تنسيق طباعي عربي راقٍ متناسق في مختلف الشاشات' },
+      { en: 'UI/UX optimization and redesign boosting e-commerce conversion rates', ar: 'تحسين تجربة وواجهة المستخدم لرفع معدل المبيعات والتفاعل' }
     ]
   },
   {
-    id: 'performance-system',
+    id: 'ai-admin-system',
     code: 'SYS_04',
-    title: { en: 'Performance & Latency', ar: 'الأداء والسرعة الفائقة' },
-    subtitle: { en: 'Zero-Jank Threads • Edge CDNs • Sub-28ms Latency', ar: 'معالجة فورية • استجابة أقل من 28ms • كفاءة الذاكرة' },
+    title: { en: 'AI Integration & Advanced Systems', ar: 'حلول الذكاء الاصطناعي وإدارة المواقع' },
+    subtitle: { en: 'AI Features Integration • Dynamic Filtering • Banner Ads • Hosting & Admin', ar: 'دمج الذكاء الاصطناعي • فلاتر ديناميكية • لافتات إعلانية • إدارة المواقع' },
     description: {
-      en: 'Obsessive latency optimization for real-time applications including high-frequency financial tickers and live medical telemetry.',
-      ar: 'تحسين مكثف لسرعة الاستجابة في التطبيقات الحية، مثل منصات التداول المالي وبث البيانات الطبية اللحظية.'
+      en: 'Smart generative AI features integration, dynamic multi-attribute filtering platforms, automated banner ad management for Laravel+React, and comprehensive server administration.',
+      ar: 'دمج ميزات وحلول الذكاء الاصطناعي، تطوير محركات التصفية والفلاتر الذكية، أنظمة إدارة اللافتات الإعلانية لمواقع Laravel + React، وإدارة السيرفرات والمواقع.'
     },
     metrics: [
-      { value: '< 28ms', label: { en: 'Real-Time Tick Latency', ar: 'زمن استجابة البيانات الحية' } },
-      { value: '0 dropped', label: { en: 'Frames During Transitions', ar: 'ثبات الإطارات دون تقطيع' } },
-      { value: '99.9%', label: { en: 'Availability Target', ar: 'نسبة الاستقرار والجاهزية' } }
+      { value: 'Real-time', label: { en: 'Dynamic Filtering', ar: 'تصفية فورية فائقة السرعة' } },
+      { value: 'AI Powered', label: { en: 'Smart Features', ar: 'ميزات ذكاء اصطناعي ذكية' } },
+      { value: '99.9%', label: { en: 'Server & Site Uptime', ar: 'جاهزية واستقرار الخوادم' } }
     ],
-    technologies: ['Web Workers', 'Dart Isolates', 'WebSocket Compression', 'Memory Profiling', 'Edge Caching'],
+    technologies: ['AI Integrations', 'Dynamic Filtering', 'Banner Ad Management', 'Site Administration', 'cPanel / VPS', 'Git / CI-CD'],
     evidence: {
-      badge: 'LATENCY < 28MS // 0 FRAME-DROPS',
-      text: { en: 'Benchmarked on low-end hardware under peak concurrency.', ar: 'تم اختباره بنجاح تحت أعلى ضغط تشغيلي وعلى أجهزة متوسطة.' }
+      badge: 'AI & DYNAMIC SYSTEMS // PRO SOLUTIONS',
+      text: { en: 'Scalable automation engines running in mission-critical environments.', ar: 'أنظمة أتمتة قابلة للتوسع تعمل بأعلى درجات الكفاءة والموثوقية.' }
     },
     highlights: [
-      { en: 'Zero UI-thread blocking via asynchronous background workers', ar: 'عدم تعطيل واجهة المستخدم أبداً بفضل العمال البرمجيين بالخلفية' },
-      { en: 'Optimized memory allocation preventing garbage collection pauses', ar: 'إدارة دقيقة للذاكرة تمنع التوقف المفاجئ للتطبيقات' },
-      { en: 'Payload compression and differential data updates', ar: 'ضغط حزم البيانات وبث التحديثات المتغيرة فقط لتوفير السرعة' }
+      { en: 'Intelligent AI assistant integration and natural language query workflows', ar: 'دمج نماذج الذكاء الاصطناعي التوليدي والمساعدين الأذكياء' },
+      { en: 'Faceted search and dynamic filtering engines for large e-commerce platforms', ar: 'أنظمة الفلاتر والتصفية السريعة ومتعددة الشروط للمتاجر الكبرى' },
+      { en: 'Automated advertising banner rotation and scheduling with impression tracking', ar: 'جدولة اللافتات الإعلانية وإدارتها وتتبع نقرات المستخدمين' }
     ]
   }
 ];
 
 export const PERSONAL_INFO = {
   name: { en: 'Ibrahim Issa', ar: 'إبراهيم عيسى' },
-  role: { en: 'Senior Web & Flutter Developer', ar: 'مطور ويب وفلاتر أول' },
+  role: { 
+    en: 'Web, Mobile Applications & Software Developer', 
+    ar: 'مطور ويب وتطبيقات وبرمجيات' 
+  },
   experienceYears: '6+',
   email: 'al3almyibrahim@gmail.com',
-  github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
-  location: { en: 'Remote / Worldwide', ar: 'عن بُعد / عالمياً' },
+  upwork: 'https://www.upwork.com/freelancers/~013011a9e383be71f3',
+  mostaql: 'https://mostaql.com/u/ibrahimphp',
+  mostaqlUsername: 'ibrahimphp',
+  github: 'https://github.com/roamingwilson',
+  linkedin: 'https://www.linkedin.com/in/ibrahim-issa-cloud/',
+  location: { en: 'Remote / Available Worldwide', ar: 'عن بُعد / متاح للعمل دائماً' },
   availability: {
-    status: { en: 'Available for New Projects', ar: 'متاح للمشاريع الجديدة' },
-    badge: { en: 'Available', ar: 'متاح للعمل' }
+    status: { 
+      en: 'Available for Hire on Upwork & Mostaql', 
+      ar: 'متاح للتوظيف والتعاقد عبر Upwork ومنصة مستقل' 
+    },
+    badge: { en: 'Available on Upwork & Mostaql', ar: 'متاح للعمل عبر Upwork ومستقل' }
   },
   stats: [
     { value: '6+', label: { en: 'Years Exp', ar: 'سنوات خبرة' } },
-    { value: '35+', label: { en: 'Projects', ar: 'مشروع منجز' } },
-    { value: 'iOS & Android', label: { en: 'Flutter Apps', ar: 'تطبيقات فلاتر' } },
-    { value: '99.9%', label: { en: 'Uptime', ar: 'استقرار تام' } }
+    { value: '5.0 ★', label: { en: 'Mostaql Rating', ar: 'تقييم ممتاز في مستقل' } },
+    { value: 'iOS & Android', label: { en: 'Mobile Apps', ar: 'تطبيقات الهواتف' } },
+    { value: '100%', label: { en: 'Client Satisfaction', ar: 'رضا تام للعملاء' } }
   ]
 };
 
 export const PROJECTS: Project[] = [
   {
-    id: 'apex-fintech-os',
+    id: 'dynamic-filtering-system',
     title: {
-      en: 'Apex Financial Platform',
-      ar: 'منصة أبيكس المالية'
+      en: 'Dynamic Filtering & Faceted Search System',
+      ar: 'نظام الفلاتر والتصفية الديناميكية المتقدمة'
     },
     tagline: {
-      en: 'Real-time trading web portal and cross-platform Flutter mobile app.',
-      ar: 'بوابة ويب متكاملة وتطبيق فلاتر للتداول المالي متعدد المنصات.'
+      en: 'High-speed multi-criteria filtering engine for Laravel + React e-commerce platforms.',
+      ar: 'محرك تصفية وفلاتر ديناميكية متعددة المعايير لمواقع ومتاجر Laravel + React.'
     },
-    category: 'cross-platform',
-    clientOrOrg: 'Apex Financial Technologies',
+    category: 'web',
+    clientOrOrg: 'E-Commerce Enterprise Platform',
     year: '2024 — 2025',
     role: {
-      en: 'Lead Developer',
-      ar: 'مطور رئيسي'
+      en: 'Lead Full-Stack Developer',
+      ar: 'مطور أول للمشروع'
     },
     description: {
-      en: 'High-frequency trading suite with Next.js web portal and high-speed Flutter app.',
-      ar: 'منظومة تداول سريعة تجمع بين بوابة Next.js وتطبيق فلاتر عالي الأداء.'
+      en: 'Custom dynamic filtering and faceted search architecture engineered for complex e-commerce catalogs. Delivers instant multi-parameter filtering (categories, specifications, price intervals, brand availability) with zero full-page reload and seamless URL state synchronization.',
+      ar: 'بناء نظام فلاتر وتصفية ديناميكية متطورة لمتاجر التجارة الإلكترونية، يتيح للعملاء تصفية المنتجات حسب الأقسام، المواصفات، نطاق السعر، والتوفر، مع استجابة فورية وتحديث لحظي لعنوان الصفحة دون إعادة تحميل.'
     },
     challenge: {
-      en: 'Rendering 50k ticks/sec without mobile UI drops or battery drain.',
-      ar: 'معالجة 50 ألف حركة سعرية بالثانية دون تقطيع أو استنزاف للبطارية.'
+      en: 'Processing multi-attribute filters across 50,000+ products with real-time reactive feedback without slowing down MySQL queries or causing UI layout jitter.',
+      ar: 'تصفية أكثر من 50 ألف منتج وفق شروط متعددة ومتغيرة بلحظة واحدة دون إثقال قاعدة البيانات أو حدوث أي بطء بالواجهة.'
     },
     solution: {
-      en: 'Flutter Isolates for off-thread processing and edge-cached WebSockets.',
-      ar: 'معالجة خلفية عبر Flutter Isolates وبث WebSockets فائق السرعة.'
+      en: 'Built optimized composite indexing in MySQL combined with Laravel query pipeline builders and React memoized filtering hooks, resulting in sub-35ms response times.',
+      ar: 'تصميم فهارس مركبة في MySQL مع بناء خطوط معالجة استعلامات في Laravel وربطها بمكونات React السريعة لاستجابة بأقل من 35ms.'
     },
     metrics: [
-      { label: { en: 'Latency', ar: 'الاستجابة' }, value: '< 28ms' },
-      { label: { en: 'Cross-Platform', ar: 'المنصات' }, value: 'iOS + Android' },
-      { label: { en: 'Active Users', ar: 'المستخدمون' }, value: '45k+' }
+      { label: { en: 'Query Latency', ar: 'سرعة الاستجابة' }, value: '< 35ms' },
+      { label: { en: 'Catalog Scale', ar: 'حجم المنتجات' }, value: '50k+ items' },
+      { label: { en: 'Filter Speed', ar: 'سرعة الفلترة' }, value: 'Instant' }
     ],
-    technologies: ['Flutter', 'Next.js', 'TypeScript', 'WebSockets', 'Tailwind CSS'],
+    technologies: ['Laravel', 'React.js', 'MySQL', 'REST API', 'Tailwind CSS', 'TypeScript'],
     features: {
       en: [
-        'Live candlestick charts with sub-second order book updates',
-        'Biometric authentication with secure hardware enclave',
-        'Offline transaction queuing with instant auto-sync'
+        'Multi-attribute faceted filtering with dynamic count indicators',
+        'Bidirectional URL query sync allowing bookmarking and sharing',
+        'Debounced interactive price range slider with smart caching'
       ],
       ar: [
-        'رسوم بيانية حية مع تحديث لحظي للأسعار',
-        'دخول بالبصمة مع حفظ آمن للمفاتيح',
-        'دعم كامل للعمل دون اتصال ومزامنة فورية'
+        'تصفية متعددة المعايير مع عدادات فورية لعدد المنتجات المتاحة',
+        'مزامنة فورية للرابط تتيح حفظ ومشاركة نتائج التصفية بسهولة',
+        'شريط تمرير تفاعلي لتحديد الأسعار مع تخزين مؤقت ذكي'
       ]
     },
     architectureNotes: {
-      en: 'Clean Architecture with shared API contracts between Dart and TypeScript.',
-      ar: 'معمارية نظيفة وعقود موحدة بين دارت وتايب سكريبت.'
+      en: 'Decoupled RESTful API endpoints feeding an atomic React client-side filter store.',
+      ar: 'فصل نقاط الـ API مع إدارة حالة ذرية سريعة في React تمنع تكرار الطلبات.'
     },
     accentColor: '#0284C7',
     webPreview: {
-      url: 'https://apex-platform.internal',
-      headline: { en: 'Trading Terminal', ar: 'لوحة التداول' },
-      subtext: { en: 'Live WebSocket Stream Active', ar: 'بث البيانات اللحظي متصل' },
+      url: 'https://store-catalog.demo',
+      headline: { en: 'Faceted Filter Console', ar: 'محرك الفلاتر الديناميكية' },
+      subtext: { en: 'Live Parameter Processing Active', ar: 'معالجة الشروط متصلة بالخادم' },
       stats: [
-        { label: 'BTC/USD', value: '$94,280' },
-        { label: 'Volume', value: '$1.8B' },
-        { label: 'Latency', value: '19ms' }
+        { label: 'Latency', value: '28ms' },
+        { label: 'Products', value: '54,210' },
+        { label: 'Cache Hit', value: '96.4%' }
       ]
     },
     mobilePreview: {
-      screenTitle: { en: 'Apex Mobile', ar: 'تطبيق أبيكس' },
+      screenTitle: { en: 'Mobile Filter Sheet', ar: 'فلاتر الهاتف التفاعلية' },
       items: [
-        { title: 'Portfolio Balance', subtitle: '$284,950 (+14.2%)', tag: 'ACTIVE' },
-        { title: 'Instant Execution', subtitle: 'Zero-slippage routing', tag: 'READY' },
-        { title: 'Biometric Shield', subtitle: 'Hardware Enclave', tag: 'LOCKED' }
+        { title: 'Brand & Category', subtitle: '4 Selected', tag: 'ACTIVE' },
+        { title: 'Price Range', subtitle: '$50 — $850', tag: 'FILTERED' },
+        { title: 'Instant Matches', subtitle: '184 Items Found', tag: 'READY' }
       ]
     }
   },
   {
-    id: 'kinetix-health-suite',
+    id: 'dynamic-banner-manager',
     title: {
-      en: 'Kinetix Telehealth Suite',
-      ar: 'منصة كينيتكس الطبية'
+      en: 'Dynamic Banner & Campaign Management Engine',
+      ar: 'نظام إدارة اللافتات الإعلانية الديناميكية'
     },
     tagline: {
-      en: 'Telehealth app with live Bluetooth ECG sensor streaming and doctor portal.',
-      ar: 'منصة طبية تربط أجهزة البلوتوث الحيوية بتطبيق الهاتف وبوابة الأطباء.'
-    },
-    category: 'cross-platform',
-    clientOrOrg: 'Kinetix MedTech',
-    year: '2023 — 2024',
-    role: {
-      en: 'Senior Full-Stack & Mobile Engineer',
-      ar: 'مهندس أول ويب وتطبيقات'
-    },
-    description: {
-      en: 'Continuous biometric sensor sync to Flutter with real-time web telemetry.',
-      ar: 'ربط أجهزة قياس النبض بتطبيق فلاتر مع لوحة تحكم فورية للأطباء.'
-    },
-    challenge: {
-      en: 'Continuous BLE data streaming without losing critical health packets.',
-      ar: 'بث بيانات الحساسات الحيوية لحظياً دون استنزاف البطارية أو فقدان بيانات.'
-    },
-    solution: {
-      en: 'Dart stream filtering and WebAssembly canvas charting for physicians.',
-      ar: 'فلترة مسارات البيانات في دارت وتصيير رسومي سريع عبر WebAssembly.'
-    },
-    metrics: [
-      { label: { en: 'Sensors', ar: 'الأجهزة' }, value: '18+ BLE' },
-      { label: { en: 'Battery Drain', ar: 'البطارية' }, value: '< 2%/hr' },
-      { label: { en: 'Patients', ar: 'المرضى' }, value: '120k+' }
-    ],
-    technologies: ['Flutter', 'React', 'TypeScript', 'BLE Bluetooth', 'WebRTC'],
-    features: {
-      en: [
-        'Real-time live ECG wave rendering with noise reduction',
-        'Secure video consultations with vitals overlay',
-        'Instant emergency alerts triggered by vital spikes'
-      ],
-      ar: [
-        'رسم فوري لموجات تخطيط القلب مع فلترة التشويش',
-        'مكالمات فيديو آمنة مع عرض مباشر للمؤشرات الحيوية',
-        'تنبيهات طوارئ فورية عند تجاوز المؤشرات للحدود'
-      ]
-    },
-    architectureNotes: {
-      en: 'HIPAA-compliant modular BLoC state architecture.',
-      ar: 'معمارية BLoC مع عزل أمني مطابق للمعايير الطبية.'
-    },
-    accentColor: '#2D6A4F',
-    webPreview: {
-      url: 'https://kinetix.med/portal',
-      headline: { en: 'Physician Console', ar: 'لوحة متابعة الطبيب' },
-      subtext: { en: 'Live Patient Vitals Stream', ar: 'بيانات المريض متصلة مباشرة' },
-      stats: [
-        { label: 'Vitals', value: 'Normal' },
-        { label: 'Sample Rate', value: '400 Hz' },
-        { label: 'Encryption', value: 'AES-256' }
-      ]
-    },
-    mobilePreview: {
-      screenTitle: { en: 'Kinetix Companion', ar: 'تطبيق المريض' },
-      items: [
-        { title: 'Bluetooth Monitor', subtitle: 'PulseOx Connected', tag: 'PAIRED' },
-        { title: 'Daily Health Score', subtitle: '96/100 Optimal', tag: 'STABLE' },
-        { title: 'Doctor Appointment', subtitle: 'Today at 14:00', tag: 'CONFIRMED' }
-      ]
-    }
-  },
-  {
-    id: 'aura-commerce-studio',
-    title: {
-      en: 'Aura 3D Luxury Store',
-      ar: 'متجر أورا ثلاثي الأبعاد'
-    },
-    tagline: {
-      en: 'Headless 3D luxury store with sub-second checkout and 99/100 Lighthouse score.',
-      ar: 'متجر فاخر مع مخصص ساعات ثلاثي الأبعاد ودفع فوري.'
+      en: 'Automated advertising banner scheduler and analytics dashboard for Laravel + React platforms.',
+      ar: 'نظام جدولة وإدارة اللافتات الإعلانية التفاعلية وتحليل النقرات لمنصات Laravel + React.'
     },
     category: 'web',
-    clientOrOrg: 'Aura Luxury Group',
-    year: '2023',
+    clientOrOrg: 'Media & Commercial Publishing Network',
+    year: '2024',
     role: {
-      en: 'Frontend Architect',
-      ar: 'مهندس الواجهات الأمامية'
+      en: 'Full-Stack Software Engineer',
+      ar: 'مهندس برمجيات متكامل'
     },
     description: {
-      en: 'Interactive 3D product visualizer built with WebGL and React.',
-      ar: 'مستعرض منتجات تفاعلي ثلاثي الأبعاد مبني بـ WebGL وReact.'
+      en: 'Engineered an end-to-end dynamic banner management system for high-traffic Laravel + React websites. Features time-scheduled campaign automation, weighted impression distribution, location-based slots, and real-time impression/click-through tracking.',
+      ar: 'تطوير نظام شامل لإدارة اللافتات الإعلانية لمواقع Laravel و React ذات الزيارات العالية. يشمل النظام جدولة زمنية للحملات، توزيع نسب الظهور، تخصيص أماكن الإعلانات حسب الأقسام، وتتبع فوري لعدد المشاهدات والنقرات.'
     },
     challenge: {
-      en: 'Instant 3D rendering on mobile with zero input lag.',
-      ar: 'تحميل نماذج ثلاثية الأبعاد فوراً على الهواتف دون أي بطء.'
+      en: 'Delivering dynamic ad banners with zero layout shift (CLS) under millions of monthly impressions without slowing down page rendering.',
+      ar: 'عرض اللافتات الإعلانية ديناميكياً لملايين الزوار شهرياً دون التسبب في اهتزاز الصفحة أو التأثير على سرعة التحميل.'
     },
     solution: {
-      en: 'Mesh compression and off-thread WebGL rendering pipelines.',
-      ar: 'ضغط المجسمات ومعالجتها في خلفية المتصفح بكفاءة.'
+      en: 'Built an asynchronous banner rotation engine with reserved slot dimensions and Redis caching, coupled with background click ingestion.',
+      ar: 'برمجة محرك تدوير إعلانات غير متزامن مع حجز مسبق لأبعاد اللافتات وتخزين مؤقت عالي الكفاءة.'
     },
     metrics: [
-      { label: { en: 'Lighthouse', ar: 'السرعة' }, value: '99/100' },
-      { label: { en: 'Sales Lift', ar: 'المبيعات' }, value: '+42%' },
-      { label: { en: 'Load Time', ar: 'التحميل' }, value: '< 180ms' }
+      { label: { en: 'Monthly Views', ar: 'المشاهدات' }, value: '4.2M/mo' },
+      { label: { en: 'CTR Boost', ar: 'نسبة النقر' }, value: '+34%' },
+      { label: { en: 'Automation', ar: 'الأتمتة' }, value: '100%' }
     ],
-    technologies: ['React', 'TypeScript', 'Three.js', 'Next.js', 'Tailwind CSS'],
+    technologies: ['Laravel', 'React.js', 'MySQL', 'Livewire', 'REST APIs', 'Chart.js'],
     features: {
       en: [
-        'Interactive 3D customizer with realistic lighting',
-        'Sub-50ms instant cart and checkout interactions',
-        'Bilingual Arabic & English typography support'
+        'Time-based campaign scheduler with start/end automated triggers',
+        'Weighted probability rotation algorithm for multiple advertisers',
+        'Interactive analytics dashboard displaying impressions and CTR trends'
       ],
       ar: [
-        'محرر خامات ثلاثي الأبعاد بإضاءة واقعية',
-        'استجابة سريعة لسلة المشتريات بأقل من 50ms',
-        'دعم كامل ومتقن للغتين العربية والإنجليزية'
+        'مجدول زمني للحملات الإعلانية يبدأ وينتهي تلقائياً بدقة',
+        'خوارزمية توزيع مرجحة لتدوير إعلانات أكثر من معلن بالقسم الواحد',
+        'لوحة تحكم إحصائية تفاعلية تعرض معدلات الظهور والنقر بدقة'
       ]
     },
     architectureNotes: {
-      en: 'Isolated 3D canvas lifecycle preventing DOM re-renders.',
-      ar: 'عزل دورة حياة الرسوم ثلاثية الأبعاد لأعلى سرعة.'
+      en: 'High-concurrency background counter with aggregated database writes.',
+      ar: 'معالجة سريعة لعدادات النقرات بالخلفية لعدم إبطاء تجربة الزائر.'
     },
     accentColor: '#B45309',
     webPreview: {
-      url: 'https://aura-store.internal',
-      headline: { en: '3D Customizer', ar: 'مستعرض التخصيص' },
-      subtext: { en: 'Real-time WebGL Engine', ar: 'محرك ثلاثي الأبعاد فوري' },
+      url: 'https://ad-engine.portal',
+      headline: { en: 'Campaign Command Center', ar: 'مركز إدارة الحملات الإعلانية' },
+      subtext: { en: 'Automated Banner Engine Active', ar: 'جدولة وتدوير الإعلانات نشطة' },
       stats: [
-        { label: '3D Engine', value: 'WebGL' },
-        { label: '3D Size', value: '1.2 MB' },
-        { label: 'Checkout', value: 'Instant' }
+        { label: 'Active Slots', value: '12 Areas' },
+        { label: 'Avg CTR', value: '4.8%' },
+        { label: 'Serving Time', value: '14ms' }
       ]
     },
     mobilePreview: {
-      screenTitle: { en: 'Aura VIP', ar: 'تطبيق أورا' },
+      screenTitle: { en: 'Advertiser Dashboard', ar: 'لوحة المعلن' },
       items: [
-        { title: 'Custom Chronograph', subtitle: 'Titanium Edition', tag: 'SAVED' },
-        { title: 'Order Tracking', subtitle: 'Crafting in Workshop', tag: 'PROCESS' },
-        { title: 'VIP Support', subtitle: 'Specialist Available', tag: 'ONLINE' }
+        { title: 'Header Hero Banner', subtitle: '94.2k Impressions today', tag: 'ACTIVE' },
+        { title: 'Sidebar Promo Slot', subtitle: 'Target: Saudi Arabia', tag: 'SCHEDULED' },
+        { title: 'Click Conversion', subtitle: '+34% vs baseline', tag: 'HIGH' }
       ]
     }
   },
   {
     id: 'omniflow-logistics',
     title: {
-      en: 'OmniFlow Driver App',
-      ar: 'تطبيق أومني فلو اللوجستي'
+      en: 'Cross-Platform Flutter Delivery & Driver App',
+      ar: 'تطبيق التوصيل اللوجستي الذكي متعدد المنصات'
     },
     tagline: {
-      en: 'Offline-first Flutter driver app with background GPS and fleet dispatch.',
-      ar: 'تطبيق فلاتر للسائقين يعمل دون إنترنت مع تتبع GPS ولوحة تحكم.'
+      en: 'Offline-first Flutter mobile application for iOS & Android with background GPS tracking and auto-sync.',
+      ar: 'تطبيق فلاتر ذكي للسائقين يعمل دون اتصال مع تتبع جغرافي دقيق ومزامنة تلقائية.'
     },
     category: 'flutter',
-    clientOrOrg: 'OmniFlow Freight',
-    year: '2023',
+    clientOrOrg: 'Logistics Fleet & Dispatch Tech',
+    year: '2023 — 2024',
     role: {
-      en: 'Mobile Engineer',
-      ar: 'مطور تطبيقات'
+      en: 'Senior Flutter & Mobile Developer',
+      ar: 'مطور أول لتطبيقات الهاتف'
     },
     description: {
-      en: 'Offline-first delivery application serving 12,000+ active truck drivers.',
-      ar: 'تطبيق تسليم يعمل بدون اتصال يخدم أكثر من 12 ألف سائق شاحنة.'
+      en: 'Engineered an offline-first delivery driver application using Google Flutter for iOS and Android. Supports background GPS telemetry, digital proof of delivery with signature capture, and resilient offline SQLite queuing that syncs automatically with a Laravel backend.',
+      ar: 'تطوير تطبيق جوال متكامل للسائقين وشركات الشحن باستخدام Google Flutter لنظامي iOS وأندرويد. يدعم التتبع الجغرافي بالخلفية، التوقيع الرقمي عند الاستلام، ومزامنة محلية لقاعدة بيانات SQLite ترسل التحديثات فور توفر الإنترنت.'
     },
     challenge: {
-      en: 'Zero packet loss in dead zones while preserving battery life.',
-      ar: 'ضمان عدم فقدان أي شحنة في المناطق المعزولة مع حماية البطارية.'
+      en: 'Ensuring zero lost delivery updates in rural zones with intermittent cellular coverage while preserving device battery life during 8-hour driving shifts.',
+      ar: 'ضمان عدم فقدان أي بيانات توصيل في المناطق ضعيفة التغطية مع توفير استهلاك بطارية الهاتف خلال نوبات العمل الطويلة.'
     },
     solution: {
-      en: 'SQLite local delta queue with automated cloud sync on reconnect.',
-      ar: 'قاعدة بيانات SQLite محلية مع مزامنة ذكية فور توفر الشبكة.'
+      en: 'Architected local SQLite delta queue with exponential backoff sync, combined with battery-optimized native GPS location sampling.',
+      ar: 'إنشاء طابور محلي بـ SQLite مع مزامنة ذكية وخوارزمية لتوفير طاقة الـ GPS بالخلفية.'
     },
     metrics: [
       { label: { en: 'Daily Drivers', ar: 'السائقون' }, value: '12.5k+' },
       { label: { en: 'Reliability', ar: 'الموثوقية' }, value: '100%' },
-      { label: { en: 'Battery Use', ar: 'البطارية' }, value: '< 2.5%/8h' }
+      { label: { en: 'Battery Drain', ar: 'استهلاك البطارية' }, value: '< 2.5%/8h' }
     ],
-    technologies: ['Flutter', 'Dart', 'SQLite', 'Background GPS', 'React'],
+    technologies: ['Flutter', 'Dart', 'SQLite', 'Background GPS', 'Firebase', 'iOS & Android'],
     features: {
       en: [
-        'Works completely offline with instant cloud sync',
-        'Battery-optimized background GPS tracking',
-        'Digital signature capture and instant delivery receipts'
+        'Full offline operability with automated cloud delta synchronization',
+        'Battery-optimized native background GPS tracking and breadcrumbs',
+        'Digital signature pad capture with instant receipt generation'
       ],
       ar: [
-        'يعمل بكفاءة تامة دون إنترنت مع مزامنة فورية',
-        'تتبع جغرافي ذكي موفر للبطارية لنوبات القيادة',
-        'توقيع رقمي مباشر وتأكيد فوري للاستلام'
+        'تشغيل كامل ومستمر دون إنترنت مع مزامنة فورية عند عودة الاتصال',
+        'تتبع جغرافي بالخلفية موفر لطاقة البطارية على مدار اليوم',
+        'توقيع إلكتروني مباشر وتوليد إيصالات الاستلام فورياً'
       ]
     },
     architectureNotes: {
-      en: 'Local SQLite cache with bidirectional delta syncing.',
-      ar: 'تخزين محلي مع مزامنة ترسل فقط التحديثات الجديدة.'
+      en: 'Clean Architecture with BLoC state management and native platform channels.',
+      ar: 'معمارية BLoC النظيفة مع قنوات تواصل مباشرة مع عتاد النظام الأصلي.'
     },
     accentColor: '#705335',
     webPreview: {
-      url: 'https://omniflow.fleet',
-      headline: { en: 'Fleet Radar', ar: 'رادار الأسطول' },
-      subtext: { en: '1,420 Trucks Active', ar: '1,420 شاحنة نشطة' },
+      url: 'https://fleet-dispatch.system',
+      headline: { en: 'Dispatch Radar', ar: 'لوحة التحكم اللوجستية' },
+      subtext: { en: 'Real-Time Driver Fleet Active', ar: 'أسطول السائقين متصل مباشرة' },
       stats: [
-        { label: 'En Route', value: '1,420' },
-        { label: 'On Schedule', value: '98.4%' },
-        { label: 'Sync Status', value: 'Live' }
+        { label: 'Active Drivers', value: '1,420' },
+        { label: 'On Schedule', value: '99.1%' },
+        { label: 'Sync Status', value: 'Synced' }
       ]
     },
     mobilePreview: {
       screenTitle: { en: 'Driver Console', ar: 'شاشة السائق' },
       items: [
-        { title: 'Route to Milan', subtitle: 'Checkpoint 4 of 6', tag: 'EN ROUTE' },
-        { title: 'Offline Storage', subtitle: '48 items cached', tag: 'SYNCED' },
-        { title: 'Proof of Delivery', subtitle: 'Ready for signature', tag: 'READY' }
+        { title: 'Current Route', subtitle: 'Stop 4 of 8 (Riyadh Hub)', tag: 'EN ROUTE' },
+        { title: 'Offline Storage', subtitle: '48 items cached locally', tag: 'SYNCED' },
+        { title: 'Proof of Delivery', subtitle: 'Digital Signature Ready', tag: 'READY' }
+      ]
+    }
+  },
+  {
+    id: 'store-ui-ux-optimization',
+    title: {
+      en: 'E-Commerce Store UI/UX Redesign & Optimization',
+      ar: 'تطوير وتحديث واجهات وتجربة المستخدم لمتجر إلكتروني'
+    },
+    tagline: {
+      en: 'Full UI/UX overhaul and catalog display enhancement with React, Laravel, and responsive Arabic RTL styling.',
+      ar: 'إعادة هيكلة وتطوير شامل لواجهات وتجربة المستخدم وعرض الأقسام والمنتجات بـ React و Laravel.'
+    },
+    category: 'cross-platform',
+    clientOrOrg: 'Retail & Multi-Vendor Commerce Group',
+    year: '2023 — 2024',
+    role: {
+      en: 'UI/UX & Frontend Architect',
+      ar: 'مهندس الواجهات وتجربة المستخدم'
+    },
+    description: {
+      en: 'Conducted a complete user interface and user experience (UI/UX) overhaul for a multi-category store. Redesigned product grid presentations, section hierarchies, quick-view slide-overs, and mobile shopping flow with native Arabic typography.',
+      ar: 'إعادة هيكلة وتصميم واجهات المستخدم وتجربة التسوق (UI/UX) لمتجر إلكتروني شامل. تم تطوير طريقة عرض المنتجات، الأقسام، النوافذ الجانبية السريعة، وتسهيل عملية الدفع عبر الهاتف مع خطوط عربية أنيقة.'
+    },
+    challenge: {
+      en: 'Modernizing legacy confusing layouts that were hurting conversion rates and loading slowly on mid-range mobile devices in Arab markets.',
+      ar: 'تحديث واجهات قديمة وبطيئة كانت تتسبب في ضياع المبيعات وصعوبة تصفح المنتجات عبر الهواتف.'
+    },
+    solution: {
+      en: 'Engineered a modern React front layer with Tailwind CSS, custom responsive card components, and optimized image compression pipelines.',
+      ar: 'برمجة واجهة أمامية حديثة بـ React و Tailwind CSS بمكونات متجاوبة وضغط فائق للصور.'
+    },
+    metrics: [
+      { label: { en: 'Lighthouse', ar: 'مؤشر لايتهاوس' }, value: '99/100' },
+      { label: { en: 'Sales Lift', ar: 'زيادة المبيعات' }, value: '+42%' },
+      { label: { en: 'Page Load', ar: 'سرعة التحميل' }, value: '< 180ms' }
+    ],
+    technologies: ['React.js', 'Laravel', 'Tailwind CSS', 'TypeScript', 'MySQL', 'RTL Arabic'],
+    features: {
+      en: [
+        'Modern product cards with instant variant pickers and stock alerts',
+        'Sub-50ms slide-over cart drawer with instant quantity modification',
+        'Pixel-perfect Arabic RTL typography using Alexandria and Readex fonts'
+      ],
+      ar: [
+        'بطاقات منتجات عصرية مع اختيار فوري للألوان والخيارات ومؤشر التوفر',
+        'سلة مشتريات جانبية سريعة تفتح بأقل من 50ms وتعدل الكميات فوراً',
+        'تناسق طباعي عربي مريح للعين باستخدام خطي ألكسندريا وريدكس'
+      ]
+    },
+    architectureNotes: {
+      en: 'Optimized state isolation preventing unnecessary parent component rerenders.',
+      ar: 'عزل منطق الحالة في React لمنع إعادة تصيير الصفحة وتحقيق أقصى سلاسة.'
+    },
+    accentColor: '#2D6A4F',
+    webPreview: {
+      url: 'https://store-showcase.app',
+      headline: { en: 'Product Display Engine', ar: 'محرك عرض المنتجات العصري' },
+      subtext: { en: 'Optimized Responsive Layout Active', ar: 'التصميم المتجاوب يعمل بأعلى سرعة' },
+      stats: [
+        { label: 'Mobile Score', value: '98/100' },
+        { label: 'Conversion', value: '+42%' },
+        { label: 'Checkout Step', value: 'Single Page' }
+      ]
+    },
+    mobilePreview: {
+      screenTitle: { en: 'Mobile Storefront', ar: 'متجر الجوال' },
+      items: [
+        { title: 'Featured Collection', subtitle: 'Instant Arabic RTL', tag: 'DISPLAY' },
+        { title: 'Slide-Over Cart', subtitle: 'Sub-50ms response', tag: 'FAST' },
+        { title: 'One-Click Buy', subtitle: 'Apple Pay & Mada', tag: 'ENABLED' }
+      ]
+    }
+  },
+  {
+    id: 'ai-assistant-portal',
+    title: {
+      en: 'AI-Powered Smart Assistant & Web Portal',
+      ar: 'تطبيق المساعد الذكي وبوابة الويب المدمجة بالذكاء الاصطناعي'
+    },
+    tagline: {
+      en: 'Generative AI assistant integration across cross-platform Flutter mobile app and responsive React web dashboard.',
+      ar: 'دمج تقنيات الذكاء الاصطناعي التوليدي عبر تطبيق فلاتر للهواتف وبوابة الويب التفاعلية.'
+    },
+    category: 'cross-platform',
+    clientOrOrg: 'Smart Automation Solutions',
+    year: '2024',
+    role: {
+      en: 'AI & Full-Stack Solutions Engineer',
+      ar: 'مهندس حلول الذكاء الاصطناعي والويب'
+    },
+    description: {
+      en: 'Integrated smart generative AI features into a dual-platform system: a cross-platform Flutter mobile app for iOS/Android and a full-stack React management dashboard. Delivers streaming real-time conversations, context memory, and automated inquiry sorting.',
+      ar: 'دمج حلول الذكاء الاصطناعي التوليدي في منظومة متكاملة: تطبيق فلاتر للهواتف الذكية وبوابة إدارة متطورة بـ React. يدعم المحادثات التفاعلية الفورية، حفظ سياق المحادثة، والتصنيف التلقائي للاستفسارات.'
+    },
+    challenge: {
+      en: 'Streaming token responses in real-time over mobile networks without UI lag or memory leaks.',
+      ar: 'بث إجابات الذكاء الاصطناعي لحظة بلحظة عبر شبكات الهاتف دون أي تقطيع في الواجهة.'
+    },
+    solution: {
+      en: 'Implemented streaming server-sent events (SSE) and WebSockets with optimized Flutter stream builders.',
+      ar: 'استخدام تقنية البث اللحظي SSE مع مسارات تدفق سريعة في دارت وفلاتر.'
+    },
+    metrics: [
+      { label: { en: 'Streaming Latency', ar: 'زمن بدء البث' }, value: '< 200ms' },
+      { label: { en: 'System Uptime', ar: 'الاستقرار' }, value: '99.8%' },
+      { label: { en: 'Queries Handled', ar: 'الاستفسارات' }, value: '25k+' }
+    ],
+    technologies: ['Flutter', 'React', 'Node.js', 'AI APIs', 'WebSockets', 'Tailwind CSS'],
+    features: {
+      en: [
+        'Real-time token streaming with sub-200ms initial response',
+        'Smart conversation memory and automatic intent categorization',
+        'Full bilingual Arabic and English natural language prompt processing'
+      ],
+      ar: [
+        'بث فوري للنصوص بالذكاء الاصطناعي بأقل من 200ms للاستجابة الأولى',
+        'ذاكرة ذكية لسياق الحوار وتصنيف تلقائي لنية واحتياجات المستخدم',
+        'معالجة لغوية ذكية متقنة باللغتين العربية والإنجليزية'
+      ]
+    },
+    architectureNotes: {
+      en: 'Server-side streaming gateway with rate limiting and secure key encapsulation.',
+      ar: 'بوابة خادم وسيطة تحمي مفاتيح الربط وتدير حجم الاستهلاك بأمان.'
+    },
+    accentColor: '#1A1816',
+    webPreview: {
+      url: 'https://ai-assistant.cloud',
+      headline: { en: 'AI Orchestration Hub', ar: 'مركز الذكاء الاصطناعي' },
+      subtext: { en: 'Live Model Streaming Pipeline Active', ar: 'بث النماذج الذكية متصل ويعمل' },
+      stats: [
+        { label: 'First Token', value: '185ms' },
+        { label: 'Memory Depth', value: '16 Turns' },
+        { label: 'Language', value: 'AR / EN' }
+      ]
+    },
+    mobilePreview: {
+      screenTitle: { en: 'AI Mobile Assistant', ar: 'المساعد الذكي' },
+      items: [
+        { title: 'Streaming Answer', subtitle: 'Analyzing query details...', tag: 'STREAMING' },
+        { title: 'Smart Summary', subtitle: 'Category: Product Support', tag: 'RESOLVED' },
+        { title: 'Voice Input', subtitle: 'Ready for microphone', tag: 'READY' }
       ]
     }
   }
@@ -422,190 +502,296 @@ export const PROJECTS: Project[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    id: 'flutter-mobile',
+    id: 'php-laravel-backend',
     title: {
-      en: 'Flutter & Mobile',
-      ar: 'فلاتر وتطبيقات الهاتف'
+      en: 'PHP, Laravel & Backend Systems',
+      ar: 'تطوير الويب الكامل - PHP ولارافيل'
     },
     description: {
-      en: 'Fast, smooth iOS and Android mobile apps with native Flutter architecture.',
-      ar: 'تطبيقات سريعة ومستقرة لآيفون وأندرويد بهندسة فلاتر الأصلية.'
+      en: 'Robust web platforms, database optimization, and high-performance REST APIs.',
+      ar: 'منصات ويب قوية، تحسين قواعد البيانات، وواجهات برمجية سريعة وموثوقة.'
+    },
+    iconName: 'Server',
+    skills: [
+      {
+        name: 'PHP & Modern OOP',
+        level: '98%',
+        experience: '6+ Years',
+        featured: true,
+        description: {
+          en: 'Object-oriented PHP 8+, design patterns, PSR standards, and security.',
+          ar: 'برمجة كائنية التوجه PHP 8+ مع تطبيق معايير الأمان والجودة.'
+        }
+      },
+      {
+        name: 'Laravel & Livewire',
+        level: '96%',
+        experience: '6+ Years',
+        featured: true,
+        description: {
+          en: 'Eloquent ORM, authentication, queue workers, and reactive Livewire components.',
+          ar: 'هيكلية MVC، معالجة الطوابير، ومكونات تفاعلية باستخدام Livewire.'
+        }
+      },
+      {
+        name: 'MySQL Database Tuning',
+        level: '95%',
+        experience: '6+ Years',
+        featured: true,
+        description: {
+          en: 'Relational schema design, query indexing, and caching performance.',
+          ar: 'تصميم قواعد البيانات، بناء الفهارس، وتسريع الاستعلامات المعقدة.'
+        }
+      },
+      {
+        name: 'CodeIgniter & MVC',
+        level: '92%',
+        experience: '5+ Years',
+        featured: false,
+        description: {
+          en: 'Lightweight web applications, legacy migration, and custom routing.',
+          ar: 'تطوير وصيانة تطبيقات الويب بالاعتماد على معمارية MVC.'
+        }
+      },
+      {
+        name: 'Node.js & Web Services',
+        level: '90%',
+        experience: '5+ Years',
+        featured: false,
+        description: {
+          en: 'RESTful API contracts, microservices, and WebSockets.',
+          ar: 'واجهات برمجية API سريعة وخدمات ويب تربط الأنظمة المختلفة.'
+        }
+      }
+    ],
+    architecturalPillars: {
+      en: [
+        'Strict PSR-12 coding compliance',
+        'Optimized sub-35ms database queries',
+        'Enterprise JWT/Sanctum authentication'
+      ],
+      ar: [
+        'التزام تام بمعايير الكود النظيف',
+        'استعلامات قواعد بيانات فائقة السرعة',
+        'أنظمة مصادقة وتشفير متقدمة'
+      ]
+    }
+  },
+  {
+    id: 'mobile-cross-platform',
+    title: {
+      en: 'Cross-Platform Mobile (Flutter, React Native & Ionic)',
+      ar: 'تطبيقات الهواتف - فلاتر ورياكت نيتف وأيونيك'
+    },
+    description: {
+      en: 'Fast, smooth iOS and Android mobile apps with clean native architectures.',
+      ar: 'تطبيقات سريعة ومستقرة لآيفون وأندرويد بهندسة فلاتر ورياكت نيتف الأصلية.'
     },
     iconName: 'Smartphone',
     skills: [
       {
-        name: 'Flutter & Dart',
+        name: 'Google Flutter & Dart',
         level: '98%',
-        experience: '6 Years',
+        experience: '6+ Years',
         featured: true,
         description: {
-          en: 'Flutter SDK, Dart 3, Isolates, and memory management.',
-          ar: 'تطوير متقدم بـ Flutter ولغة Dart مع إدارة الذاكرة والأداء.'
+          en: 'Flutter SDK, Dart 3, custom widgets, and memory management.',
+          ar: 'تطوير متقدم بـ Flutter ولغة Dart مع إدارة احترافية للذاكرة والأداء.'
         }
       },
       {
-        name: 'State (BLoC & Riverpod)',
+        name: 'State Management (BLoC & Riverpod)',
         level: '95%',
-        experience: '6 Years',
+        experience: '6+ Years',
         featured: true,
         description: {
-          en: 'Predictable reactive state and modular architecture.',
-          ar: 'إدارة الحالة باحترافية وفصل منطق العمل عن الواجهات.'
+          en: 'Predictable reactive state, modular feature trees, and Clean Architecture.',
+          ar: 'إدارة الحالة باحترافية عبر BLoC وفصل منطق العمل عن الواجهات.'
         }
       },
       {
-        name: 'Native Channels',
+        name: 'React Native & Ionic',
         level: '90%',
-        experience: '5 Years',
-        featured: false,
+        experience: '4+ Years',
+        featured: true,
         description: {
-          en: 'Hardware bridging for Bluetooth, location, and camera.',
-          ar: 'ربط مباشر مع ميزات النظام كالبلوتوث وتحديد الموقع.'
+          en: 'Cross-platform mobile apps using JavaScript/TypeScript and hybrid tools.',
+          ar: 'تطوير تطبيقات الجوال متعددة المنصات باستخدام تقنيات الويب الأصلية.'
         }
       },
       {
-        name: 'Offline-First Storage',
+        name: 'Offline-First SQLite Storage',
         level: '94%',
-        experience: '6 Years',
+        experience: '6+ Years',
         featured: false,
         description: {
-          en: 'SQLite, Drift, Hive, and auto background sync.',
-          ar: 'قواعد بيانات محلية ومزامنة تلقائية دون اتصال.'
+          en: 'Local databases, background queuing, and automated cloud sync.',
+          ar: 'قواعد بيانات محلية ومزامنة تلقائية دون اتصال بالإنترنت.'
+        }
+      },
+      {
+        name: 'Hardware & Device APIs',
+        level: '92%',
+        experience: '5+ Years',
+        featured: false,
+        description: {
+          en: 'Background GPS tracking, camera, biometric auth, and push notifications.',
+          ar: 'ربط مباشر مع ميزات الهاتف كالتتبع الجغرافي والكاميرا والبصمة.'
         }
       }
     ],
     architecturalPillars: {
       en: [
-        'Clean Architecture separation',
-        'Fluid native animations & gestures',
-        'Comprehensive automated tests'
+        'Clean Architecture layer separation',
+        'Fluid 60fps native gestures & animations',
+        'Automated testing & App Store deployment'
       ],
       ar: [
         'معمارية برمجية نظيفة ومنظمة',
-        'حركات سلسة وإيماءات طبيعية',
-        'اختبارات آلية شاملة'
+        'حركات سلسة وإيماءات طبيعية بمعدل 60fps',
+        'نشر معتمد على متجري آبل وجوجل بلاي'
       ]
     }
   },
   {
-    id: 'web-engineering',
+    id: 'frontend-ui-ux',
     title: {
-      en: 'Web Engineering',
-      ar: 'تطوير الويب الحديث'
+      en: 'Modern Frontend, React & UI/UX',
+      ar: 'الواجهات الأمامية الحديثة وتجربة المستخدم'
     },
     description: {
-      en: 'High-speed web platforms with sub-second page transitions.',
-      ar: 'منصات ويب فائقة السرعة بتحميل فوري وتصميم متجاوب.'
+      en: 'High-speed web platforms with pixel-perfect responsive Arabic RTL support.',
+      ar: 'منصات ويب فائقة السرعة بتحميل فوري وتصميم متجاوب يدعم العربية ببراعة.'
     },
     iconName: 'Globe',
     skills: [
       {
-        name: 'React & TypeScript',
+        name: 'React.js & Next.js',
         level: '97%',
-        experience: '6 Years',
+        experience: '6+ Years',
         featured: true,
         description: {
-          en: 'Strict type safety, custom hooks, and fast rendering.',
-          ar: 'أكواد تايب سكريبت قوية ومكونات سريعة وقابلة لإعادة الاستخدام.'
+          en: 'Server rendering, custom hooks, fast state management, and modern patterns.',
+          ar: 'مكونات سريعة، تصيير خادم متطور، وهيكلية معيارية قابلة للتوسع.'
         }
       },
       {
-        name: 'Next.js & SSR',
-        level: '94%',
-        experience: '5 Years',
-        featured: true,
-        description: {
-          en: 'App Router, server rendering, edge caching, and SEO.',
-          ar: 'تصيير على الخادم، تخزين مؤقت، وتحسين محركات البحث.'
-        }
-      },
-      {
-        name: 'Tailwind CSS & UI',
+        name: 'HTML5, CSS3 & Tailwind CSS',
         level: '98%',
-        experience: '5 Years',
+        experience: '6+ Years',
         featured: true,
         description: {
-          en: 'Modern responsive layouts with native RTL Arabic.',
-          ar: 'تصميم متجاوب وأنيق مع دعم كامل للغة العربية.'
+          en: 'Modern responsive layouts with native RTL Arabic typography.',
+          ar: 'تصميم متجاوب وأنيق مع دعم كامل للغة العربية والاتجاه من اليمين لليسار.'
         }
       },
       {
-        name: 'Web Performance',
-        level: '95%',
-        experience: '6 Years',
+        name: 'UI/UX Redesign & Optimization',
+        level: '94%',
+        experience: '5+ Years',
+        featured: true,
+        description: {
+          en: 'Streamlining product catalogs, section displays, and cart conversion flows.',
+          ar: 'تطوير وتحديث واجهات المتاجر وعرض الأقسام لرفع نسب المبيعات.'
+        }
+      },
+      {
+        name: 'Angular & TypeScript',
+        level: '89%',
+        experience: '4+ Years',
         featured: false,
         description: {
-          en: 'Sub-second loads and 95+ Google Lighthouse scores.',
-          ar: 'تحميل بأقل من ثانية ودرجات ممتازة في مؤشرات جوجل.'
+          en: 'Strict typing, reusable enterprise modules, and scalable frontends.',
+          ar: 'أمان نمطي صارم ومكونات مؤسسية قابلة لإعادة الاستخدام.'
+        }
+      },
+      {
+        name: 'Dynamic Filtering Systems',
+        level: '96%',
+        experience: '5+ Years',
+        featured: true,
+        description: {
+          en: 'Faceted search engines, URL state sync, and real-time query builders.',
+          ar: 'محركات التصفية والفلاتر الذكية وتحديث الروابط اللحظي للمتاجر.'
         }
       }
     ],
     architecturalPillars: {
       en: [
-        'Modular reusable components',
-        'Sub-second page speeds',
-        'Full bilingual Arabic & English'
+        'Modular reusable component design',
+        'Sub-second page speeds & 99/100 Lighthouse',
+        'Full bilingual Arabic & English parity'
       ],
       ar: [
         'مكونات برمجية قابلة لإعادة الاستخدام',
-        'سرعة تصفح فائقة',
-        'دعم كامل للغتين العربية والإنجليزية'
+        'سرعة تصفح فائقة ومؤشرات لايتهاوس ممتازة',
+        'دعم كامل واحترافي للغتين العربية والإنجليزية'
       ]
     }
   },
   {
-    id: 'systems-integration',
+    id: 'specialized-ai-admin',
     title: {
-      en: 'APIs & Cloud',
-      ar: 'الربط البرمجي والسحاب'
+      en: 'AI Solutions, Dynamic Ads & Site Admin',
+      ar: 'حلول الذكاء الاصطناعي وإدارة المواقع'
     },
     description: {
-      en: 'Connecting web and mobile apps with reliable APIs and CI/CD.',
-      ar: 'ربط المنصات بواجهات برمجية رصينة وخطوط نشر سحابية مؤتمتة.'
+      en: 'Smart AI integrations, automated advertising banner systems, and server management.',
+      ar: 'دمج تقنيات الذكاء الاصطناعي، إدارة اللافتات الإعلانية، واستضافة وإدارة الخوادم.'
     },
     iconName: 'Cpu',
     skills: [
       {
-        name: 'REST & GraphQL APIs',
-        level: '93%',
-        experience: '6 Years',
+        name: 'AI Models & Smart Features',
+        level: '92%',
+        experience: '3+ Years',
         featured: true,
         description: {
-          en: 'Clean endpoints, smart caching, and error resilience.',
-          ar: 'واجهات برمجية سريعة مع معالجة رصينة للأخطاء.'
+          en: 'Integrating conversational AI, automated data categorization, and smart workflows.',
+          ar: 'دمج المساعدين الأذكياء وأتمتة المهام وتصنيف البيانات بالذكاء الاصطناعي.'
         }
       },
       {
-        name: 'App Store & CI/CD',
-        level: '89%',
-        experience: '5 Years',
-        featured: false,
+        name: 'Dynamic Banner Management',
+        level: '95%',
+        experience: '4+ Years',
+        featured: true,
         description: {
-          en: 'Automated release pipelines for iOS and Android.',
-          ar: 'أتمتة رفع وتحديث التطبيقات على المتاجر.'
+          en: 'Automated advertising schedulers, weighted rotation, and click telemetry.',
+          ar: 'نظام إدارة اللافتات الإعلانية وجدولتها وتتبع نسب النقر والظهور.'
         }
       },
       {
-        name: 'Security & Auth',
-        level: '92%',
-        experience: '5 Years',
+        name: 'Site Administration & Hosting',
+        level: '93%',
+        experience: '6+ Years',
         featured: false,
         description: {
-          en: 'Biometrics, encrypted storage, and OAuth2.',
-          ar: 'المصادقة بالبصمة والتخزين المشفر للبيانات.'
+          en: 'cPanel, VPS configuration, Linux environments, and SSL setup.',
+          ar: 'إدارة المواقع، إعداد خوادم VPS، واستضافات cPanel وتأمين السيرفرات.'
+        }
+      },
+      {
+        name: 'CI/CD & App Store Release',
+        level: '91%',
+        experience: '5+ Years',
+        featured: false,
+        description: {
+          en: 'Automated deployment pipelines for web, App Store, and Google Play.',
+          ar: 'أتمتة رفع وتحديث التطبيقات والمواقع على المتاجر والخوادم.'
         }
       }
     ],
     architecturalPillars: {
       en: [
-        'End-to-end data encryption',
-        'Automated CI/CD deployment',
-        'Real-time crash monitoring'
+        'End-to-end data security & encryption',
+        'Automated CI/CD deployment pipelines',
+        '24/7 site stability & performance monitoring'
       ],
       ar: [
         'حماية وتشفير متكامل للبيانات',
-        'أتمتة النشر والتحديثات',
-        'مراقبة فورية للأخطاء'
+        'أتمتة النشر والتحديثات للمشاريع',
+        'مراقبة فورية للأداء واستقرار الخوادم'
       ]
     }
   }
@@ -614,161 +800,167 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const REVIEWS: Review[] = [
   {
     id: 'rev-01',
-    clientName: 'Alexander Vance',
+    clientName: 'Sultan Al-Otaibi',
     clientRole: {
-      en: 'VP of Engineering',
-      ar: 'نائب رئيس قسم الهندسة'
+      en: 'Founder & Business Owner',
+      ar: 'مؤسس منصة تجارة إلكترونية'
     },
-    company: 'Apex Financial',
-    companyDomain: 'apex-engine.internal',
+    company: 'Saudi Retail Co.',
+    companyDomain: 'mostaql.com/u/ibrahimphp',
     projectName: {
-      en: 'Apex Platform',
-      ar: 'منصة أبيكس'
+      en: 'Dynamic Filtering & Store UI',
+      ar: 'نظام الفلاتر الديناميكية وتطوير واجهات المتجر'
     },
-    platform: 'Flutter & Web',
+    platform: 'Laravel & React',
     reviewText: {
-      en: 'Ibrahim delivered our trading portal and Flutter app with incredible speed and rock-solid reliability.',
-      ar: 'أنجز إبراهيم منصة التداول وتطبيق فلاتر بسرعة مذهلة واستقرار لا تشوبه شائبة.'
+      en: 'Ibrahim demonstrated extraordinary skill in engineering our dynamic filtering system and store UI. High speed, immaculate code quality, and fast delivery. One of the best developers on Mostaql.',
+      ar: 'أشكر الأخ إبراهيم على احترافيته العالية في برمجة نظام الفلاتر الديناميكية وتطوير واجهات متجرنا بالـ React ولارافيل. سرعة في التنفيذ، كود مرتب ونظيف جداً، ومتابعة ممتازة بعد التسليم. أنصح الجميع بالتعامل معه بشدة في مستقل.'
     },
-    avatarInitials: 'AV',
+    avatarInitials: 'SO',
     verified: true,
-    date: 'Jan 2025'
+    date: 'Feb 2025',
+    rating: 5.0
   },
   {
     id: 'rev-02',
-    clientName: 'Dr. Elena Rostova',
+    clientName: 'Eng. Tariq Al-Mansoor',
     clientRole: {
       en: 'CTO',
       ar: 'الرئيس التنفيذي للتكنولوجيا'
     },
-    company: 'Kinetix MedTech',
-    companyDomain: 'kinetix.med',
+    company: 'Logistics Fleet Solutions (UAE)',
+    companyDomain: 'mostaql.com/u/ibrahimphp',
     projectName: {
-      en: 'Telehealth Suite',
-      ar: 'منصة الرعاية الطبية'
+      en: 'Cross-Platform Flutter Driver App',
+      ar: 'تطبيق فلاتر الذكي للسائقين'
     },
     platform: 'Flutter & Web',
     reviewText: {
-      en: 'Precise, dependable, and clean. Ibrahim built our Bluetooth medical app and web dashboard flawlessly.',
-      ar: 'دقة عالية وكود منظم. طوّر إبراهيم تطبيق الأجهزة الطبية ولوحة التحكم بأعلى كفاءة.'
-    },
-    avatarInitials: 'ER',
-    verified: true,
-    date: 'Oct 2024'
-  },
-  {
-    id: 'rev-03',
-    clientName: 'Tariq Al-Mansoor',
-    clientRole: {
-      en: 'Founder & CEO',
-      ar: 'المؤسس والرئيس التنفيذي'
-    },
-    company: 'Aura Luxury Group',
-    companyDomain: 'aura-chronos.store',
-    projectName: {
-      en: '3D Luxury Store',
-      ar: 'متجر أورا ثلاثي الأبعاد'
-    },
-    platform: 'Enterprise Web',
-    reviewText: {
-      en: 'Outstanding technical skill and refined design sense. Our 3D store loads in under 200ms.',
-      ar: 'كفاءة تقنية رفيعة وذوق تصميمي عالٍ. متجرنا ثلاثي الأبعاد يعمل بأقل من 200ms.'
+      en: 'Ibrahim delivered our cross-platform Flutter mobile app and integrated it seamlessly with our Laravel backend. The offline sync engine works with zero data loss. Dependable and professional.',
+      ar: 'قام إبراهيم بتطوير تطبيق فلاتر متكامل لنظامي آيفون وأندرويد مع ربطه بنظام Laravel وإدارته لقواعد البيانات والمزامنة دون اتصال. عمل استثنائي والتزام رائع بالموعد.'
     },
     avatarInitials: 'TM',
     verified: true,
-    date: 'Jul 2024'
+    date: 'Nov 2024',
+    rating: 5.0
+  },
+  {
+    id: 'rev-03',
+    clientName: 'Dr. Ahmad Radwan',
+    clientRole: {
+      en: 'Product Manager',
+      ar: 'مدير تطوير المنتجات البرمجية'
+    },
+    company: 'Digital Media Network',
+    companyDomain: 'mostaql.com/u/ibrahimphp',
+    projectName: {
+      en: 'Dynamic Banner & Campaign Engine',
+      ar: 'نظام إدارة اللافتات الإعلانية الديناميكية'
+    },
+    platform: 'Laravel & React',
+    reviewText: {
+      en: 'A top-tier engineer with profound mastery of PHP, Laravel, and frontend dynamics. He architected our automated banner ad system and live control panel with surgical precision.',
+      ar: 'مهندس متميز وخبير في الـ PHP والـ Laravel. أدار وطوّر نظام الإعلانات واللافتات الديناميكية ولوحة التحكم بدقة واحترافية متناهية. تواصل ممتاز ومرونة عالية طوال المشروع.'
+    },
+    avatarInitials: 'AR',
+    verified: true,
+    date: 'Aug 2024',
+    rating: 5.0
   },
   {
     id: 'rev-04',
-    clientName: 'Marcus Lindholm',
+    clientName: 'Khaled Al-Mutawa',
     clientRole: {
-      en: 'Head of Product',
-      ar: 'رئيس تطوير المنتجات'
+      en: 'Startup Founder',
+      ar: 'مؤسس شركة تقنية ناشئة'
     },
-    company: 'OmniFlow Freight',
-    companyDomain: 'omniflow.fleet',
+    company: 'Commerce Hub (Kuwait)',
+    companyDomain: 'mostaql.com/u/ibrahimphp',
     projectName: {
-      en: 'Driver App',
-      ar: 'تطبيق السائقين'
+      en: 'Store UI/UX Redesign & Optimization',
+      ar: 'تطوير وتحديث واجهات المتجر وتجربة المستخدم'
     },
-    platform: 'Flutter Native',
+    platform: 'Full-Stack & Mobile',
     reviewText: {
-      en: 'Our 12,000 drivers rely on Ibrahim’s offline sync engine daily. Zero data lost since launch.',
-      ar: 'يعتمد 12 ألف سائق على نظام المزامنة الذي بناه إبراهيم. لم نفقد أي شحنة منذ الإطلاق.'
+      en: 'Ibrahim transformed our e-commerce platform with clean React code and responsive Arabic design. Conversion jumped by 42% right after deployment. Highly recommended!',
+      ar: 'إبراهيم من خيرة المبرمجين الذين تعاملت معهم عبر مستقل. فهم متطلبات المشروع بسرعة وطبقها بأعلى معايير الجودة، مع اهتمام فائق بتجربة المستخدم وتصميم الجوال.'
     },
-    avatarInitials: 'ML',
+    avatarInitials: 'KM',
     verified: true,
-    date: 'Mar 2024'
+    date: 'May 2024',
+    rating: 5.0
   }
 ];
 
 export const EXPERIENCE_TIMELINE: ExperienceItem[] = [
   {
     id: 'exp-01',
-    period: '2023 — Present',
+    period: '2022 — Present',
     role: {
-      en: 'Lead Web & Flutter Developer',
-      ar: 'مطور ويب وفلاتر رئيسي'
+      en: 'Senior Full-Stack Web & Mobile Developer',
+      ar: 'مطور أول للويب وتطبيقات الهاتف المستقلة'
     },
     company: {
-      en: 'Enterprise & Startups',
-      ar: 'شركات ومشاريع ناشئة'
+      en: 'Mostaql Platform & Global Clients',
+      ar: 'منصة مستقل وعملاء دوليين'
     },
     location: {
-      en: 'Remote',
-      ar: 'عن بُعد'
+      en: 'Remote / Freelance',
+      ar: 'عن بُعد / عمل حر'
     },
     type: 'Lead',
     achievements: {
       en: [
-        'Built full-stack web platforms and Flutter apps serving 150k+ users',
-        'Maintained high-performance reliability and 99.9% crash-free stability'
+        'Delivered 35+ full-stack web platforms and cross-platform mobile apps for businesses across the GCC and Arab world with a 5.0 rating on Mostaql',
+        'Engineered high-performance dynamic filtering engines and automated banner ad systems for Laravel + React platforms',
+        'Integrated cutting-edge AI features and offline SQLite sync into production mobile applications'
       ],
       ar: [
-        'بناء منصات ويب وتطبيقات فلاتر تخدم أكثر من 150 ألف مستخدم نشط',
-        'تحقيق أداء عالي وسلس مع معدل استقرار 99.9% وخلو تام من الأخطاء'
+        'إنجاز وتسليم أكثر من 35 مشروعاً ناجحاً في تطبيقات الويب والهاتف لعملاء في الخليج والوطن العربي بتقييم 5 نجوم على مستقل',
+        'برمجة وتطوير أنظمة الفلاتر والتصفية الديناميكية وإدارة اللافتات الإعلانية لمنصات Laravel + React',
+        'دمج حلول الذكاء الاصطناعي ونظم المزامنة دون اتصال في تطبيقات الهواتف الذكية'
       ]
     },
-    technologies: ['Flutter', 'Next.js', 'React', 'TypeScript', 'Tailwind']
+    technologies: ['Laravel', 'Flutter', 'React', 'PHP', 'MySQL', 'TypeScript', 'Tailwind', 'AI APIs']
   },
   {
     id: 'exp-02',
-    period: '2021 — 2023',
+    period: '2020 — 2022',
     role: {
-      en: 'Senior Mobile & Web Developer',
-      ar: 'مطور أول لتطبيقات الهاتف والويب'
+      en: 'Lead Mobile & Full-Stack Engineer',
+      ar: 'مهندس برمجيات رئيسي لتطبيقات الهاتف والويب'
     },
     company: {
-      en: 'Digital Product Studio',
-      ar: 'استوديو المنتجات الرقمية'
+      en: 'Software Studio',
+      ar: 'استوديو تطوير البرمجيات'
     },
     location: {
-      en: 'Hybrid',
-      ar: 'نمط هجين'
+      en: 'Remote / Hybrid',
+      ar: 'عن بُعد / نمط هجين'
     },
     type: 'Full-time',
     achievements: {
       en: [
-        'Shipped 14 Flutter apps to App Store and Google Play',
-        'Built fast React dashboards with live data filters'
+        'Shipped cross-platform mobile apps to Apple App Store and Google Play using Flutter and React Native',
+        'Engineered secure Laravel RESTful APIs with Sanctum authentication, MySQL schema tuning, and Livewire components'
       ],
       ar: [
-        'إطلاق 14 تطبيق فلاتر على متجري آبل وجوجل بلاي',
-        'تطوير لوحات تحكم React سريعة مع تحديث فوري للبيانات'
+        'إطلاق تطبيقات متعددة المنصات على متجري آبل وجوجل بلاي باستخدام Flutter و React Native',
+        'برمجة واجهات API آمنة باستخدام Laravel و Livewire وقواعد بيانات MySQL المحسنة'
       ]
     },
-    technologies: ['Flutter', 'Dart', 'React', 'TypeScript', 'BLoC']
+    technologies: ['Flutter', 'Dart', 'React Native', 'Laravel', 'PHP', 'MySQL', 'BLoC']
   },
   {
     id: 'exp-03',
-    period: '2019 — 2021',
+    period: '2018 — 2020',
     role: {
-      en: 'Web & Mobile Engineer',
-      ar: 'مهندس ويب وتطبيقات الهاتف'
+      en: 'Web & Applications Developer',
+      ar: 'مطور مواقع وتطبيقات الويب'
     },
     company: {
-      en: 'Software Labs',
-      ar: 'مختبرات تطوير البرمجيات'
+      en: 'Digital Solutions Lab',
+      ar: 'مختبر الحلول الرقمية'
     },
     location: {
       en: 'On-site',
@@ -777,15 +969,15 @@ export const EXPERIENCE_TIMELINE: ExperienceItem[] = [
     type: 'Full-time',
     achievements: {
       en: [
-        'Boosted app speed by 300% via Flutter migrations',
-        'Engineered scalable REST APIs and real-time backend services'
+        'Developed custom full-stack web applications using PHP, CodeIgniter, Laravel, and MySQL',
+        'Built responsive, fast-loading user interfaces with HTML5, CSS3, JavaScript, and React with full Arabic RTL support'
       ],
       ar: [
-        'مضاعفة سرعة التطبيقات 3 مرات عبر التحديث إلى فلاتر',
-        'برمجة واجهات API وخدمات فورية عالية الكفاءة'
+        'تطوير وتخصيص تطبيقات الويب باستخدام PHP و CodeIgniter و Laravel وقواعد بيانات MySQL',
+        'بناء واجهات مستخدم متجاوبة وسريعة بـ HTML5 و CSS3 و React مع دعم كامل للغة العربية'
       ]
     },
-    technologies: ['TypeScript', 'React', 'Flutter', 'Node.js', 'PostgreSQL']
+    technologies: ['PHP', 'Laravel', 'CodeIgniter', 'MySQL', 'JavaScript', 'HTML5', 'CSS3']
   }
 ];
 
@@ -793,22 +985,22 @@ export const CREDIBILITY_METRICS = [
   {
     number: '6+ Years',
     label: { en: 'Industry Experience', ar: 'سنوات خبرة متخصصة' },
-    desc: { en: 'Hands-on frontend and mobile engineering.', ar: 'تطوير احترافي لمنصات الويب وتطبيقات الهاتف.' }
+    desc: { en: 'Web, mobile, and software engineering.', ar: 'تطوير احترافي لمنصات الويب وتطبيقات الهاتف.' }
+  },
+  {
+    number: '5.0 ★',
+    label: { en: 'Mostaql Rating', ar: 'تقييم ممتاز على مستقل' },
+    desc: { en: 'Verified client reviews and recommendations.', ar: 'تقييمات موثقة وتوصيات ممتازة من العملاء.' }
   },
   {
     number: '35+',
-    label: { en: 'Delivered Projects', ar: 'مشاريع تم إطلاقها' },
-    desc: { en: 'Production apps across fintech and commerce.', ar: 'منتجات رقمية حية في مجالات التقنية والتجارة.' }
+    label: { en: 'Delivered Projects', ar: 'مشاريع تم إنجازها' },
+    desc: { en: 'Full-stack platforms and mobile apps.', ar: 'تطبيقات ومواقع حية في مجالات التجارة والخدمات.' }
   },
   {
     number: 'iOS & Android',
-    label: { en: 'Flutter Apps', ar: 'تطبيقات فلاتر' },
-    desc: { en: 'Cross-platform apps on App Store & Google Play.', ar: 'تطبيقات منشورة على متجري آبل وجوجل بلاي.' }
-  },
-  {
-    number: '99.9%',
-    label: { en: 'System Reliability', ar: 'جاهزية واستقرار تام' },
-    desc: { en: 'Enterprise-grade stability and architecture.', ar: 'بنية برمجية قوية تضمن استمرار العمل بكفاءة.' }
+    label: { en: 'Cross-Platform Apps', ar: 'تطبيقات الهواتف' },
+    desc: { en: 'Flutter, React Native & Ionic on stores.', ar: 'تطبيقات منشورة على متجري آبل وجوجل بلاي.' }
   }
 ];
 
@@ -817,32 +1009,32 @@ export const PHILOSOPHY_PILLARS = [
     number: '01',
     title: { en: 'Unified Stack', ar: 'تكامل الويب والهاتف' },
     desc: {
-      en: 'Shared business logic and consistent UI across all screens.',
-      ar: 'منطق عمل موحد وتجربة استخدام متناغمة عبر كافة الشاشات.'
+      en: 'Cohesive Laravel backends serving responsive React web frontends and native Flutter mobile apps.',
+      ar: 'بنية خلفية قوية بـ Laravel تخدم واجهات React وتطبيقات فلاتر للهواتف بتناغم تام.'
     }
   },
   {
     number: '02',
-    title: { en: 'Peak Speed', ar: 'السرعة الفائقة' },
+    title: { en: 'Peak Speed & UX', ar: 'السرعة وتجربة المستخدم' },
     desc: {
-      en: 'Native-feel Flutter apps and sub-second load times on the web.',
-      ar: 'تطبيقات فلاتر أصلية وتحميل فوري لمنصات الويب بأقل من ثانية.'
+      en: 'Sub-second page speeds, sub-35ms database queries, and 60fps mobile fluid animations.',
+      ar: 'تحميل فوري للمواقع، استعلامات قواعد بيانات بأقل من 35ms، وتطبيقات هواتف فائقة السلاسة.'
     }
   },
   {
     number: '03',
-    title: { en: 'Clean Code', ar: 'كود نظيف' },
+    title: { en: 'Clean Code & Security', ar: 'كود نظيف وأمان صارم' },
     desc: {
-      en: 'Modular, maintainable architecture with solid automated tests.',
-      ar: 'كود منظم يسهل صيانته وتطويره مع اختبارات تضمن الاستقرار.'
+      en: 'Modular PSR architecture, strict type contracts, and secure data encryption.',
+      ar: 'كود منظم يسهل صيانته وتطويره مع حماية وتشفير متكامل للبيانات.'
     }
   },
   {
     number: '04',
-    title: { en: 'Reliable Results', ar: 'نتائج موثوقة' },
+    title: { en: 'Client Trust & Mostaql', ar: 'الالتزام ورضا العملاء' },
     desc: {
-      en: 'High uptime and intuitive user journeys that drive growth.',
-      ar: 'استقرار تام وتجربة مستخدم مريحة تدعم نمو الأعمال.'
+      en: '100% on-time project delivery with continuous post-launch support and 5.0 star feedback.',
+      ar: 'التزام تام بالمواعيد، دعم مستمر بعد التسليم، وتقييم 5 نجوم يضمن راحة العميل.'
     }
   }
 ];

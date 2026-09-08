@@ -9,9 +9,10 @@ import {
   Github, 
   Linkedin, 
   ArrowUp, 
-  Send, 
-  MessageSquare,
-  Sparkles
+  ExternalLink,
+  Star,
+  Briefcase,
+  ShieldCheck
 } from 'lucide-react';
 
 interface SceneContactProps {
@@ -22,33 +23,15 @@ interface SceneContactProps {
 
 export const SceneContact: React.FC<SceneContactProps> = ({
   lang,
-  prefilledSubject = '',
   onRestartExperience,
 }) => {
   const isAr = lang === 'ar';
   const [copied, setCopied] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    projectScope: prefilledSubject || '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsFormOpen(false);
-    }, 2800);
   };
 
   return (
@@ -70,7 +53,12 @@ export const SceneContact: React.FC<SceneContactProps> = ({
           transition={{ duration: 0.6, delay: 0.1 }}
           className="space-y-3"
         >
-          <h2 className="text-4xl sm:text-6xl font-extrabold text-[#1A1816] font-syne tracking-tight leading-[1.15]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] text-xs font-mono font-bold tracking-wider mb-2">
+            <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
+            <span>{isAr ? 'متاح للعمل والتعاقد الفوري' : 'AVAILABLE FOR IMMEDIATE HIRE'}</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1A1816] font-syne tracking-tight leading-[1.15]">
             {isAr ? (
               <>
                 لنبنِ شيئًا <span className="text-[#0284C7]">يستحق</span> أن يُستخدم.
@@ -84,17 +72,76 @@ export const SceneContact: React.FC<SceneContactProps> = ({
 
           <p className="text-xs sm:text-sm text-[#6B655F] max-w-md mx-auto leading-relaxed">
             {isAr
-              ? 'متاح لمناقشة المشاريع الهندسية وعقود التطوير الاستشارية.'
-              : 'Available for technical engineering and strategic contract development.'}
+              ? 'متاح لبدء المشاريع البرمجية وعقود التطوير عبر منصات العمل الحر العالمية الموثوقة أو عبر البريد مباشرة.'
+              : 'Available for client projects and technical contracts on trusted global freelance platforms or via direct email.'}
           </p>
+        </motion.div>
+
+        {/* Premier Hiring Platforms: Upwork & Mostaql */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto pt-1 text-left rtl:text-right"
+        >
+          {/* Upwork Profile Card */}
+          <a
+            href={PERSONAL_INFO.upwork}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-4 bg-white hover:bg-[#F0FDF4] border-2 border-[#14A800] hover:border-[#108A00] transition-all modern-flat-shadow group cursor-pointer block"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#14A800]">
+                <Briefcase className="w-4 h-4 text-[#14A800]" />
+                <span>UPWORK</span>
+              </div>
+              <span className="px-2 py-0.5 bg-[#DCFCE7] text-[#166534] text-[10px] font-mono font-bold flex items-center gap-1">
+                <ShieldCheck className="w-3 h-3 text-[#166534]" />
+                <span>{isAr ? 'موثق' : 'Verified'}</span>
+              </span>
+            </div>
+            <h3 className="text-sm font-bold text-[#1A1816] font-syne group-hover:text-[#14A800] transition-colors flex items-center justify-between">
+              <span>{isAr ? 'ملفي على Upwork' : 'Hire on Upwork'}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#14A800] group-hover:translate-x-0.5 transition-transform" />
+            </h3>
+            <p className="text-[11px] text-[#6B655F] mt-1 line-clamp-2">
+              {isAr ? 'عقود برمجية مضمونة بالساعة أو بالمشروع مع حماية الدفع.' : 'Escrow-protected hourly or fixed-price contracts for web & mobile.'}
+            </p>
+          </a>
+
+          {/* Mostaql Profile Card */}
+          <a
+            href={PERSONAL_INFO.mostaql}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-4 bg-white hover:bg-amber-50/60 border border-amber-300 hover:border-amber-400 transition-all modern-flat-shadow group cursor-pointer block"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-900">
+                <Star className="w-4 h-4 text-amber-600 fill-amber-500" />
+                <span>MOSTAQL</span>
+              </div>
+              <span className="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-mono font-bold">
+                5.0 ★
+              </span>
+            </div>
+            <h3 className="text-sm font-bold text-[#1A1816] font-syne group-hover:text-amber-900 transition-colors flex items-center justify-between">
+              <span>{isAr ? 'ملفي على مستقل' : 'Hire on Mostaql'}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-amber-700 group-hover:translate-x-0.5 transition-transform" />
+            </h3>
+            <p className="text-[11px] text-[#6B655F] mt-1 line-clamp-2">
+              {isAr ? 'حساب مستقل: ibrahimphp، تقييم 5 نجوم ورضا كامل للعملاء.' : 'Mostaql profile (ibrahimphp) with 5.0 star rating and 100% satisfaction.'}
+            </p>
+          </a>
         </motion.div>
 
         {/* One-Click Copyable Email Strip */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-md mx-auto pt-2"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="max-w-xl mx-auto pt-1"
         >
           <div className="flex items-center justify-between p-2 bg-white border border-[#E2DDD5] modern-flat-shadow hover:border-[#0284C7] transition-all">
             <div className="flex items-center gap-2.5 px-3">
@@ -123,124 +170,39 @@ export const SceneContact: React.FC<SceneContactProps> = ({
           </div>
         </motion.div>
 
-        {/* Direct Actions: Send Direct Message & Social Channels */}
+        {/* Secondary Profile Links: GitHub & LinkedIn */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-wrap items-center justify-center gap-3 pt-1"
         >
-          <button
-            onClick={() => setIsFormOpen(!isFormOpen)}
-            className="px-5 py-2.5 bg-[#1A1816] hover:bg-[#0284C7] text-white text-xs font-bold transition-all shadow-md flex items-center gap-2 cursor-pointer"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>{isFormOpen ? (isAr ? 'إغلاق النموذج' : 'Close Form') : (isAr ? 'إرسال رسالة مباشرة' : 'Send Message')}</span>
-          </button>
-
           <a
             href={PERSONAL_INFO.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2.5 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow"
+            className="px-4 py-2 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
           >
             <Github className="w-3.5 h-3.5 text-[#0284C7]" />
             <span>GitHub</span>
+            <ExternalLink className="w-3 h-3 text-[#8C857D]" />
           </a>
 
           <a
             href={PERSONAL_INFO.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2.5 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow"
+            className="px-4 py-2 bg-white hover:bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-mono text-[#1A1816] flex items-center gap-2 transition-all modern-flat-shadow hover:border-[#0284C7]"
           >
             <Linkedin className="w-3.5 h-3.5 text-[#0284C7]" />
             <span>LinkedIn</span>
+            <ExternalLink className="w-3 h-3 text-[#8C857D]" />
           </a>
         </motion.div>
 
-        {/* Interactive In-Scene Contact Form */}
-        {isFormOpen && (
-          <motion.form
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            onSubmit={handleSubmit}
-            className="max-w-md mx-auto p-5 bg-white border border-[#E2DDD5] modern-elevated-shadow space-y-3 text-left rtl:text-right text-xs"
-          >
-            {submitted ? (
-              <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-center font-bold">
-                {isAr ? 'تم استلام رسالتك بنجاح. سأتواصل معك قريباً.' : 'Message received. I will follow up soon.'}
-              </div>
-            ) : (
-              <>
-                <div className="space-y-1">
-                  <label className="font-mono text-[#6B655F] uppercase tracking-wider block text-[10px]">
-                    {isAr ? 'الاسم' : 'Name'}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full p-2 bg-[#FAF8F5] border border-[#E2DDD5] focus:outline-none focus:border-[#0284C7]"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="font-mono text-[#6B655F] uppercase tracking-wider block text-[10px]">
-                    {isAr ? 'البريد الإلكتروني' : 'Email'}
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full p-2 bg-[#FAF8F5] border border-[#E2DDD5] focus:outline-none focus:border-[#0284C7]"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="font-mono text-[#6B655F] uppercase tracking-wider block text-[10px]">
-                    {isAr ? 'المشروع' : 'Scope'}
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.projectScope}
-                    placeholder="e.g. Apex Financial Platform"
-                    onChange={(e) => setFormData({ ...formData, projectScope: e.target.value })}
-                    className="w-full p-2 bg-[#FAF8F5] border border-[#E2DDD5] focus:outline-none focus:border-[#0284C7]"
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="font-mono text-[#6B655F] uppercase tracking-wider block text-[10px]">
-                    {isAr ? 'الرسالة' : 'Message'}
-                  </label>
-                  <textarea
-                    rows={2}
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full p-2 bg-[#FAF8F5] border border-[#E2DDD5] focus:outline-none focus:border-[#0284C7]"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white font-bold flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>{isAr ? 'إرسال الرسالة' : 'Send Message'}</span>
-                </button>
-              </>
-            )}
-          </motion.form>
-        )}
-
         {/* Restart Experience Link */}
-        <div className="pt-6 border-t border-[#E8E3DA] flex items-center justify-between text-xs font-mono text-[#8C857D] max-w-md mx-auto">
-          <span>{PERSONAL_INFO.name[lang]} • 2025</span>
+        <div className="pt-6 border-t border-[#E8E3DA] flex items-center justify-between text-xs font-mono text-[#8C857D] max-w-xl mx-auto">
+          <span>{PERSONAL_INFO.name[lang]} • {new Date().getFullYear()}</span>
 
           <button
             onClick={onRestartExperience}

@@ -27,10 +27,10 @@ export const SceneAbout: React.FC<SceneAboutProps> = ({
     {
       icon: Zap,
       number: '02',
-      title: { en: 'Web & Flutter Speed', ar: 'سرعة الويب والهاتف' },
+      title: { en: 'Full-Stack & Mobile Speed', ar: 'سرعة الويب والهاتف المتكاملة' },
       summary: { 
-        en: 'High-performance React & Next.js on web and native Flutter apps on iOS & Android.', 
-        ar: 'أداء فائق مع React و Next.js على الويب وتطبيقات فلاتر أصلية على iOS وأندرويد.' 
+        en: 'High-performance Laravel & PHP backends, responsive React frontends, and native Flutter apps on iOS & Android.', 
+        ar: 'أداء فائق مع خوادم Laravel وقواعد بيانات MySQL، واجهات React، وتطبيقات فلاتر على iOS وأندرويد.' 
       },
     },
     {

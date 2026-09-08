@@ -60,11 +60,12 @@ export interface Review {
   company: string;
   companyDomain: string;
   projectName: { en: string; ar: string };
-  platform: 'Flutter & Web' | 'Flutter Native' | 'Enterprise Web';
+  platform: 'Flutter & Web' | 'Flutter Native' | 'Enterprise Web' | 'Laravel & React' | 'Full-Stack & Mobile';
   reviewText: { en: string; ar: string };
   avatarInitials: string;
   verified: boolean;
   date: string;
+  rating?: number;
 }
 
 export interface SkillCategory {

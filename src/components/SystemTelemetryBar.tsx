@@ -1,6 +1,7 @@
 import React from 'react';
 import { Language } from '../types';
-import { Globe, Mail } from 'lucide-react';
+import { Globe, Mail, ExternalLink, Star } from 'lucide-react';
+import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface SystemTelemetryBarProps {
   currentScene: number;
@@ -32,12 +33,24 @@ export const SystemTelemetryBar: React.FC<SystemTelemetryBarProps> = ({
           </div>
           <span className="text-[#C5BFAF] text-xs">|</span>
           <span className="text-[11px] font-mono text-[#0284C7] font-semibold hidden sm:inline">
-            {isAr ? 'مطور ويب ومطور تطبيقات فلاتر' : 'WEB & FLUTTER APPS DEVELOPER'}
+            {isAr ? 'مطور ويب وتطبيقات وبرمجيات' : 'WEB, APPS & SOFTWARE DEVELOPER'}
           </span>
         </div>
 
-        {/* Top Actions: Language & Contact Jump */}
+        {/* Top Actions: Mostaql Profile Link, Language & Contact Jump */}
         <div className="flex items-center gap-2">
+          <a
+            href={PERSONAL_INFO.mostaql}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 bg-amber-50/90 hover:bg-amber-100 backdrop-blur-md border border-amber-200 text-xs font-mono text-amber-900 transition-all cursor-pointer modern-flat-shadow"
+            title="Mostaql Profile"
+          >
+            <Star className="w-3 h-3 text-amber-600 fill-amber-500" />
+            <span className="font-bold">مستقل</span>
+            <ExternalLink className="w-3 h-3 text-amber-700" />
+          </a>
+
           <button
             onClick={onToggleLanguage}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 hover:bg-white backdrop-blur-md border border-[#E2DDD5] text-xs font-mono text-[#1A1816] transition-all cursor-pointer modern-flat-shadow hover:border-[#0284C7]"
