@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Language } from './types';
 import { PortfolioStage } from './components/PortfolioStage';
 
@@ -50,6 +51,7 @@ export default function App() {
         lang={lang} 
         onToggleLanguage={handleToggleLanguage} 
       />
+      <Analytics />
     </div>
   );
 }
